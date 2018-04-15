@@ -1,0 +1,13 @@
+C:\Users\kristo\Desktop\git\VR2ProjektSolution\DAL.App.Interfaces\bin\Debug\netstandard2.0\DAL.App.Interfaces.deps.json
+C:\Users\kristo\Desktop\git\VR2ProjektSolution\DAL.App.Interfaces\bin\Debug\netstandard2.0\DAL.App.Interfaces.dll
+C:\Users\kristo\Desktop\git\VR2ProjektSolution\DAL.App.Interfaces\bin\Debug\netstandard2.0\DAL.App.Interfaces.pdb
+C:\Users\kristo\Desktop\git\VR2ProjektSolution\DAL.App.Interfaces\bin\Debug\netstandard2.0\DAL.EF.Interfaces.dll
+C:\Users\kristo\Desktop\git\VR2ProjektSolution\DAL.App.Interfaces\bin\Debug\netstandard2.0\Domain.dll
+C:\Users\kristo\Desktop\git\VR2ProjektSolution\DAL.App.Interfaces\bin\Debug\netstandard2.0\DAL.EF.Interfaces.pdb
+C:\Users\kristo\Desktop\git\VR2ProjektSolution\DAL.App.Interfaces\bin\Debug\netstandard2.0\Domain.pdb
+C:\Users\kristo\Desktop\git\VR2ProjektSolution\DAL.App.Interfaces\obj\Debug\netstandard2.0\DAL.App.Interfaces.csprojResolveAssemblyReference.cache
+C:\Users\kristo\Desktop\git\VR2ProjektSolution\DAL.App.Interfaces\obj\Debug\netstandard2.0\DAL.App.Interfaces.csproj.CoreCompileInputs.cache
+C:\Users\kristo\Desktop\git\VR2ProjektSolution\DAL.App.Interfaces\obj\Debug\netstandard2.0\DAL.App.Interfaces.AssemblyInfoInputs.cache
+C:\Users\kristo\Desktop\git\VR2ProjektSolution\DAL.App.Interfaces\obj\Debug\netstandard2.0\DAL.App.Interfaces.AssemblyInfo.cs
+C:\Users\kristo\Desktop\git\VR2ProjektSolution\DAL.App.Interfaces\obj\Debug\netstandard2.0\DAL.App.Interfaces.dll
+C:\Users\kristo\Desktop\git\VR2ProjektSolution\DAL.App.Interfaces\obj\Debug\netstandard2.0\DAL.App.Interfaces.pdb

@@ -1,0 +1,12 @@
+C:\Users\kristo\Desktop\git\VR2ProjektSolution\VR2Identity\bin\Debug\netcoreapp2.0\VR2Identity.deps.json
+C:\Users\kristo\Desktop\git\VR2ProjektSolution\VR2Identity\bin\Debug\netcoreapp2.0\VR2Identity.runtimeconfig.json
+C:\Users\kristo\Desktop\git\VR2ProjektSolution\VR2Identity\bin\Debug\netcoreapp2.0\VR2Identity.runtimeconfig.dev.json
+C:\Users\kristo\Desktop\git\VR2ProjektSolution\VR2Identity\bin\Debug\netcoreapp2.0\VR2Identity.dll
+C:\Users\kristo\Desktop\git\VR2ProjektSolution\VR2Identity\bin\Debug\netcoreapp2.0\VR2Identity.pdb
+C:\Users\kristo\Desktop\git\VR2ProjektSolution\VR2Identity\obj\Debug\netcoreapp2.0\VR2Identity.csproj.CoreCompileInputs.cache
+C:\Users\kristo\Desktop\git\VR2ProjektSolution\VR2Identity\obj\Debug\netcoreapp2.0\VR2Identity.AssemblyInfoInputs.cache
+C:\Users\kristo\Desktop\git\VR2ProjektSolution\VR2Identity\obj\Debug\netcoreapp2.0\VR2Identity.AssemblyInfo.cs
+C:\Users\kristo\Desktop\git\VR2ProjektSolution\VR2Identity\obj\Debug\netcoreapp2.0\VR2Identity.dll
+C:\Users\kristo\Desktop\git\VR2ProjektSolution\VR2Identity\obj\Debug\netcoreapp2.0\VR2Identity.pdb
+C:\Users\kristo\Desktop\git\VR2ProjektSolution\VR2Identity\obj\Debug\netcoreapp2.0\VR2Identity.csprojResolveAssemblyReference.cache
+C:\Users\kristo\Desktop\git\VR2ProjektSolution\VR2Identity\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs

@@ -1,0 +1,45 @@
+﻿@model Domain.BlogPost
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>BlogPost</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.BlogPostTitle)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BlogPostTitle)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.BlogPostContent)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BlogPostContent)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.BlogPostPostedTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BlogPostPostedTime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Blog)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Blog.BlogId)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="BlogPostId" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>
