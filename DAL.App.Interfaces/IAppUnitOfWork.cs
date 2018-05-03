@@ -18,5 +18,6 @@ namespace DAL.App.Interfaces
         IRepository<BlogPost> BlogPosts { get; }
         IRepository<BlogComment> BlogComments { get; }
         IRepository<BlogCategory> BlogCategories { get; }
+        IRepository<BlogPostComment> BlogPostComments { get; }
     }
 }

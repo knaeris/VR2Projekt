@@ -46,5 +46,12 @@ namespace BL.Factories
             dto.BlogPosts = b?.BlogPosts?.Select(x => BlogPostDTO.CreateFromDomain(x)).ToList();
             return dto;
         }
+        public BlogDTO TransformWithBlogComments(Blog b)
+        {
+            var dto = Transform(b);
+            if (dto == null) return null;
+            dto.BlogComments = b?.BlogComments?.Select(x => BlogCommentDTO.CreateFromDomain(x)).ToList();
+            return dto;
+        }
     }
 }

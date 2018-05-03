@@ -9,5 +9,10 @@ namespace Domain
     // Add profile data for application users by adding properties to the ApplicationUser class
     public class ApplicationUser : IdentityUser
     {
+        public List<FollowedBlog> FollowedBlogs { get; set; }
+        public List<LikedBlog> LikedBlogs { get; set; }
+        public List<LikedBlogPost> LikedBlogPosts { get; set; }
+        public List<FavoriteCategory> FavoriteCategories { get; set; }
+
     }
 }

@@ -18,6 +18,7 @@ namespace DAL.App.EF.Helpers
             {
                 {typeof(IBlogRepository), dataContext => new EFBlogRepository(dataContext as ApplicationDbContext) },
                 {typeof(IBlogPostRepository), dataContext => new EFBlogPostRepository(dataContext as ApplicationDbContext) },
+                {typeof(IBlogPostCommentRepository), dataContext => new EFBlogPostCommentRepository(dataContext as ApplicationDbContext) },
                 {typeof(IBlogCommentRepository), dataContext => new EFBlogCommentRepository(dataContext as ApplicationDbContext) },
                 {typeof(IBlogCategoryRepository), dataContext => new EFBlogCategoryRepository(dataContext as ApplicationDbContext) }
             };

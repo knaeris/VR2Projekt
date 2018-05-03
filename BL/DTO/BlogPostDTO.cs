@@ -14,7 +14,7 @@ namespace BL.DTO
         public string BlogPostContent { get; set; }
         public int BlogId { get; set; }
         //public string Blog { get; set; }
-        public List<BlogCommentDTO> BlogComments { get; set; }
+        public List<BlogPostCommentDTO> BlogPostComments { get; set; }
         public string ApplicationUserId { get; set; }
 
         public static BlogPostDTO CreateFromDomain(BlogPost bp)
@@ -31,12 +31,12 @@ namespace BL.DTO
 
             };
         }
-        public static BlogPostDTO CreateFromDomainWithBlogComments ( BlogPost bp)
+        public static BlogPostDTO CreateFromDomainWithBlogPostComments ( BlogPost bp)
         {
             var blogPost = CreateFromDomain(bp);
             if (blogPost == null) return null;
-            blogPost.BlogComments = bp?.BlogComments?
-                .Select(c => BlogCommentDTO.CreateFromDomain(c)).ToList();
+            blogPost.BlogPostComments = bp?.BlogPostComments?
+                .Select(c => BlogPostCommentDTO.CreateFromDomain(c)).ToList();
             return blogPost;
         }
     }

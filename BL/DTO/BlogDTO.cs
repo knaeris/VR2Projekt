@@ -15,6 +15,7 @@ namespace BL.DTO
       //  public int BlogCategoryId { get; set; }
        // public string BlogCategory { get; set; }
         public List<BlogPostDTO> BlogPosts { get; set; }
+        public List<BlogCommentDTO> BlogComments { get; set; }
         public string ApplicationUserId { get; set; }
 
         public static BlogDTO CreateFromDomain(Blog b)
@@ -35,6 +36,14 @@ namespace BL.DTO
             if (blog == null) return null;
             blog.BlogPosts = b?.BlogPosts?
                 .Select(c => BlogPostDTO.CreateFromDomain(c)).ToList();
+            return blog;
+        }
+        public static BlogDTO CreateFromDomainWithBlogComments(Blog b)
+        {
+            var blog = CreateFromDomain(b);
+            if (blog == null) return null;
+            blog.BlogComments = b?.BlogComments?
+                .Select(c => BlogCommentDTO.CreateFromDomain(c)).ToList();
             return blog;
         }
     }

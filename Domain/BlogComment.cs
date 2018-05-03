@@ -13,7 +13,7 @@ namespace Domain
         public string BlogCommentContent { get; set; }
         public DateTime BlogCommentPostedTime { get; set; }
       
-        public virtual BlogPost BlogPost { get; set; }
+        public virtual Blog Blog { get; set; }
         public string ApplicationUserId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
     }

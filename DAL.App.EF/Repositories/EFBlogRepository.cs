@@ -25,7 +25,7 @@ namespace DAL.App.EF.Repositories
             return RepositoryDbSet
                 .Include(y=>y.BlogCategory)
                 .Include(x => x.BlogPosts)
-                
+                .Include(z=>z.BlogComments)
                 .SingleOrDefault(x => (int)id[0] == x.BlogId);
         }
     }

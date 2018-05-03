@@ -44,6 +44,8 @@ namespace BL.Services
         {
             return BlogDTO.CreateFromDomain(_uow.Blogs.Find(blogId));
         }
+
+
         public BlogDTO UpdateBlog(int blogId, BlogDTO blog)
         {
             var b = _blogFactory.Transform(blog);
@@ -52,5 +54,6 @@ namespace BL.Services
             _uow.SaveChanges();
             return blog;
         }
+        
     }
 }

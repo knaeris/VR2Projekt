@@ -38,6 +38,8 @@ namespace DAL.App.EF
         private IRepository<BlogCategory> _blogCategories;
         public IRepository<BlogCategory> BlogCategories => GetEntityRepository<BlogCategory>(); // _blogCategories = _blogCategories ?? new EFBlogCategoryRepository(_applicationDbContext);
 
+        private IRepository<BlogPostComment> _blogPostComments;
+        public IRepository<BlogPostComment> BlogPostComments => GetEntityRepository<BlogPostComment>();
         public void SaveChanges()
         {
             _applicationDbContext.SaveChanges();

@@ -16,7 +16,7 @@ namespace Domain
         public DateTime BlogPostPostedTime { get; set; }
      
         public virtual Blog Blog { get; set; }
-        public virtual List<BlogComment> BlogComments { get; set; }
+        public virtual List<BlogPostComment> BlogPostComments { get; set; }
         public string ApplicationUserId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
 

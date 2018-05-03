@@ -93,6 +93,8 @@ namespace VR2Projekt
             services.AddTransient<IBlogPostFactory, BlogPostFactory>();
             services.AddTransient<IBlogCommentService, BlogCommentService>();
             services.AddTransient<IBlogCommentFactory, BlogCommentFactory>();
+            services.AddTransient<IBlogPostCommentService, BlogPostCommentService>();
+            services.AddTransient<IBlogPostCommentFactory, BlogPostCommentFactory>();
             services.AddTransient<IBlogCategoryService, BlogCategoryService>();
             services.AddTransient<IBlogCategoryFactory, BlogCategoryFactory>();
 

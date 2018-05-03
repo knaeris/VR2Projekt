@@ -16,9 +16,10 @@ namespace Domain
         public string BlogDescription { get; set; }
         public virtual List<BlogPost> BlogPosts { get; set; } = new List<BlogPost>();
         public int Rating { get; set; }
-       
+        public virtual List<BlogComment> BlogComments { get; set; }
         public virtual BlogCategory BlogCategory { get; set; }
         public string ApplicationUserId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
+        
     }
 }

@@ -11,7 +11,7 @@ namespace BL.Factories
     {
         BlogPostDTO Transform(BlogPost bp);
         BlogPost Transform(BlogPostDTO dto);
-        BlogPostDTO TransformWithBlogComments(BlogPost bp);
+        BlogPostDTO TransformWithBlogPostComments(BlogPost bp);
     }
     public class BlogPostFactory : IBlogPostFactory
     {
@@ -37,11 +37,11 @@ namespace BL.Factories
             };
         }
 
-        public BlogPostDTO TransformWithBlogComments(BlogPost bp)
+        public BlogPostDTO TransformWithBlogPostComments(BlogPost bp)
         {
             var dto = Transform(bp);
             if (dto == null) return null;
-            dto.BlogComments = bp?.BlogComments?.Select(x => BlogCommentDTO.CreateFromDomain(x)).ToList();
+            dto.BlogPostComments = bp?.BlogPostComments?.Select(x => BlogPostCommentDTO.CreateFromDomain(x)).ToList();
             return dto;
         }
     }

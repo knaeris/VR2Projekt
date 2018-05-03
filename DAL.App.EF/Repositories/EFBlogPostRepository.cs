@@ -25,7 +25,7 @@ namespace DAL.App.EF.Repositories
         {
             return RepositoryDbSet
                 
-                .Include(z=>z.BlogComments)
+                .Include(z=>z.BlogPostComments)
                 .Include(x => x.Blog)
                 .ThenInclude(y => y.BlogCategory)
 

@@ -1,0 +1,107 @@
+﻿
+@{
+    ViewData["Title"] = "JsClient";
+}
+
+<h2>JsClient</h2>
+
+<div class="row">
+    <div class="col-md-4">
+        <form>
+            <h3>Invoke API</h3>
+            <div class="form-group">
+                <label>api</label>
+                <input class="form-control" type="text" name="api" value="/api/foobars/" id="invoke-api"/>
+            </div>
+            
+            <div class="form-group">
+                <button id="invoke-button-invoke" class="btn btn-default"> invoke api</button>
+                
+            </div>
+        </form>
+    </div>
+    <div class="col-md-4">
+        <form>
+            <h3>register</h3>
+            <div class="form-group">
+                <label>Email</label>
+                <input id="register-email" class="form-control" type="text" name="email"/>
+            </div>
+            <div class="form-group">
+                <label>password</label>
+                <input id="register-password" class="form-control" type="password" name="password"/>
+            </div>
+            <div class="form-group">
+                <label>password</label>
+                <input id="register-password-confirm" class="form-control" type="password" name="password-confirm"/>
+            </div>
+            <div class="form-group">
+                <button id="register-button-register" class="btn btn-default"> register</button>
+                
+            </div>
+        </form>
+    </div>
+    <div class="col-md-4">
+        <form>
+            <h3>login</h3>
+            <div class="form-group">
+                <label>Email</label>
+                <input id="login-email" class="form-control" type="text" name="email" />
+            </div>
+            <div class="form-group">
+                <label>password</label>
+                <input id="login-password" class="form-control" type="password" name="password"/>
+            </div>
+            <div class="form-group">
+                <button id="login-button-login" class="btn btn-default"> Login</button>
+                <button id="login-button-logout"class="btn btn-default"> Logout</button>
+            </div>
+        </form>
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <h3>Result</h3>
+        <pre id="result-area" >waiting for action..</pre>
+    </div>
+
+</div>
+@section Scripts{ 
+    <script >
+        function showError(jqHXR) {
+            $('#result-area').html('Got error:' + jqHXR.status + ' ' + jqHXR.statusText);
+
+        };
+        function showResult(result, append) {
+            if (append === true) {
+                $('#result-area').html();
+
+            } else {
+
+
+            }
+
+        }
+        $('#login-button-login').click(function (event) { 
+
+            event.preventDefault();
+            console.log("login clicked");
+            var data = {
+                email: $('#login-email').val();
+                password: $('#login-password').val();
+
+            };
+            $.ajax({
+                type: 'POST',
+                url: '/api/security/gettoken'
+                contentType: 'applicationjson; charset=utf-8',
+                data: JSON.stringify(data)
+            })
+                .done(function (json) {
+                    console.log(JSON.stringify(json, null, '  '));
+                })
+                .fail();
+        });
+    </script>
+}

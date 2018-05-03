@@ -23,7 +23,7 @@ namespace DAL.App.EF.Repositories
         public override BlogComment Find(params object[] id)
         {
             return RepositoryDbSet
-                .Include(y => y.BlogPost)
+                .Include(y => y.Blog)
                 .SingleOrDefault(x => (int)id[0] == x.BlogCommentId);
         }
     }

@@ -13,5 +13,7 @@ namespace BL.Services.Interfaces
         BlogDTO AddNewBlog(BlogDTO newBlog);
         BlogDTO UpdateBlog(int blogId, BlogDTO blog);
         void  DeleteBlog(int blogId);
+
+      
     }
 }

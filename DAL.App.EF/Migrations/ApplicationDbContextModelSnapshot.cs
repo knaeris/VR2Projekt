@@ -126,13 +126,13 @@ namespace DAL.App.EF.Migrations
 
                     b.Property<DateTime>("BlogCommentPostedTime");
 
-                    b.Property<int?>("BlogPostId");
+                    b.Property<int?>("BlogId");
 
                     b.HasKey("BlogCommentId");
 
                     b.HasIndex("ApplicationUserId");
 
-                    b.HasIndex("BlogPostId");
+                    b.HasIndex("BlogId");
 
                     b.ToTable("BlogComments");
                 });
@@ -161,6 +161,29 @@ namespace DAL.App.EF.Migrations
                     b.HasIndex("BlogId");
 
                     b.ToTable("BlogPosts");
+                });
+
+            modelBuilder.Entity("Domain.BlogPostComment", b =>
+                {
+                    b.Property<int>("BlogPostCommentId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("ApplicationUserId");
+
+                    b.Property<string>("BlogPostCommentContent")
+                        .HasMaxLength(640);
+
+                    b.Property<DateTime>("BlogPostCommentPostedTime");
+
+                    b.Property<int?>("BlogPostId");
+
+                    b.HasKey("BlogPostCommentId");
+
+                    b.HasIndex("ApplicationUserId");
+
+                    b.HasIndex("BlogPostId");
+
+                    b.ToTable("BlogPostComments");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -295,9 +318,9 @@ namespace DAL.App.EF.Migrations
                         .WithMany()
                         .HasForeignKey("ApplicationUserId");
 
-                    b.HasOne("Domain.BlogPost", "BlogPost")
+                    b.HasOne("Domain.Blog", "Blog")
                         .WithMany("BlogComments")
-                        .HasForeignKey("BlogPostId");
+                        .HasForeignKey("BlogId");
                 });
 
             modelBuilder.Entity("Domain.BlogPost", b =>
@@ -309,6 +332,17 @@ namespace DAL.App.EF.Migrations
                     b.HasOne("Domain.Blog", "Blog")
                         .WithMany("BlogPosts")
                         .HasForeignKey("BlogId");
+                });
+
+            modelBuilder.Entity("Domain.BlogPostComment", b =>
+                {
+                    b.HasOne("Domain.ApplicationUser", "ApplicationUser")
+                        .WithMany()
+                        .HasForeignKey("ApplicationUserId");
+
+                    b.HasOne("Domain.BlogPost", "BlogPost")
+                        .WithMany("BlogPostComments")
+                        .HasForeignKey("BlogPostId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

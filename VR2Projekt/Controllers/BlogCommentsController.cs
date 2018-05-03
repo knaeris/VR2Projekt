@@ -23,7 +23,7 @@ namespace VR2Projekt.Controllers
         // GET: BlogComments
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.BlogComments.Include(b => b.BlogPost);
+            var applicationDbContext = _context.BlogComments.Include(b => b.Blog);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -36,7 +36,7 @@ namespace VR2Projekt.Controllers
             }
 
             var blogComment = await _context.BlogComments
-                .Include(b => b.BlogPost)
+                .Include(b => b.Blog)
                 .SingleOrDefaultAsync(m => m.BlogCommentId == id);
             if (blogComment == null)
             {
@@ -132,7 +132,7 @@ namespace VR2Projekt.Controllers
             }
 
             var blogComment = await _context.BlogComments
-                .Include(b => b.BlogPost)
+                .Include(b => b.Blog)
                 .SingleOrDefaultAsync(m => m.BlogCommentId == id);
             if (blogComment == null)
             {
