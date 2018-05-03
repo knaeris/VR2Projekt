@@ -9,5 +9,6 @@ namespace Domain
         public int LikedBlogId { get; set; }
         public Blog Blog { get; set; }
         public DateTime LikedBlogTime { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
     }
 }

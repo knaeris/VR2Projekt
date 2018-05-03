@@ -19,5 +19,9 @@ namespace DAL.App.Interfaces
         IRepository<BlogComment> BlogComments { get; }
         IRepository<BlogCategory> BlogCategories { get; }
         IRepository<BlogPostComment> BlogPostComments { get; }
+        IRepository<FavoriteCategory> FavoriteCategories { get; }
+        IRepository<FollowedBlog> FollowedBlogs { get; }
+        IRepository<LikedBlog> LikedBlogs { get; }
+        IRepository<LikedBlogPost> LikedBlogPosts { get; }
     }
 }

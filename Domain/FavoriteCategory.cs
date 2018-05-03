@@ -8,6 +8,7 @@ namespace Domain
     {
         public int FavoriteCategoryId { get; set; }
         public BlogCategory BlogCategory { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
         
     }
 }

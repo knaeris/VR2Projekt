@@ -21,6 +21,10 @@ namespace DAL.App.EF
         public DbSet<BlogComment> BlogComments { get; set; }
         public DbSet<BlogCategory> BlogCategories { get; set; }
         public DbSet<BlogPostComment> BlogPostComments { get; set; }
+        public DbSet<FavoriteCategory> FavoriteCategories { get; set; }
+        public DbSet<FollowedBlog> FollowedBlogs { get; set; }
+        public DbSet<LikedBlog> LikedBlogs { get; set; }
+        public DbSet<LikedBlogPost> LikedBlogPosts { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder builder)

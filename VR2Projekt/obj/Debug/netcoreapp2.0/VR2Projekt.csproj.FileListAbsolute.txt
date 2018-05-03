@@ -1,3 +1,8 @@
+C:\Users\kristo\Desktop\git\VR2ProjektSolution\VR2Projekt\obj\Debug\netcoreapp2.0\VR2Projekt.csprojResolveAssemblyReference.cache
+C:\Users\kristo\Desktop\git\VR2ProjektSolution\VR2Projekt\obj\Debug\netcoreapp2.0\VR2Projekt.csproj.CoreCompileInputs.cache
+C:\Users\kristo\Desktop\git\VR2ProjektSolution\VR2Projekt\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+C:\Users\kristo\Desktop\git\VR2ProjektSolution\VR2Projekt\obj\Debug\netcoreapp2.0\VR2Projekt.AssemblyInfoInputs.cache
+C:\Users\kristo\Desktop\git\VR2ProjektSolution\VR2Projekt\obj\Debug\netcoreapp2.0\VR2Projekt.AssemblyInfo.cs
 C:\Users\kristo\Desktop\git\VR2ProjektSolution\VR2Projekt\bin\Debug\netcoreapp2.0\VR2Projekt.deps.json
 C:\Users\kristo\Desktop\git\VR2ProjektSolution\VR2Projekt\bin\Debug\netcoreapp2.0\VR2Projekt.runtimeconfig.json
 C:\Users\kristo\Desktop\git\VR2ProjektSolution\VR2Projekt\bin\Debug\netcoreapp2.0\VR2Projekt.runtimeconfig.dev.json
@@ -15,10 +20,5 @@ C:\Users\kristo\Desktop\git\VR2ProjektSolution\VR2Projekt\bin\Debug\netcoreapp2.
 C:\Users\kristo\Desktop\git\VR2ProjektSolution\VR2Projekt\bin\Debug\netcoreapp2.0\DAL.EF.Interfaces.pdb
 C:\Users\kristo\Desktop\git\VR2ProjektSolution\VR2Projekt\bin\Debug\netcoreapp2.0\DAL.EF.pdb
 C:\Users\kristo\Desktop\git\VR2ProjektSolution\VR2Projekt\bin\Debug\netcoreapp2.0\Domain.pdb
-C:\Users\kristo\Desktop\git\VR2ProjektSolution\VR2Projekt\obj\Debug\netcoreapp2.0\VR2Projekt.csprojResolveAssemblyReference.cache
-C:\Users\kristo\Desktop\git\VR2ProjektSolution\VR2Projekt\obj\Debug\netcoreapp2.0\VR2Projekt.csproj.CoreCompileInputs.cache
-C:\Users\kristo\Desktop\git\VR2ProjektSolution\VR2Projekt\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
-C:\Users\kristo\Desktop\git\VR2ProjektSolution\VR2Projekt\obj\Debug\netcoreapp2.0\VR2Projekt.AssemblyInfoInputs.cache
-C:\Users\kristo\Desktop\git\VR2ProjektSolution\VR2Projekt\obj\Debug\netcoreapp2.0\VR2Projekt.AssemblyInfo.cs
 C:\Users\kristo\Desktop\git\VR2ProjektSolution\VR2Projekt\obj\Debug\netcoreapp2.0\VR2Projekt.dll
 C:\Users\kristo\Desktop\git\VR2ProjektSolution\VR2Projekt\obj\Debug\netcoreapp2.0\VR2Projekt.pdb

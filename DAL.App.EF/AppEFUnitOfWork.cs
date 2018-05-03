@@ -40,6 +40,18 @@ namespace DAL.App.EF
 
         private IRepository<BlogPostComment> _blogPostComments;
         public IRepository<BlogPostComment> BlogPostComments => GetEntityRepository<BlogPostComment>();
+
+        private IRepository<FavoriteCategory> _favoriteCategories;
+        public IRepository<FavoriteCategory> FavoriteCategories => GetEntityRepository<FavoriteCategory>();
+
+        private IRepository<FollowedBlog> _followedBlogs;
+        public IRepository<FollowedBlog> FollowedBlogs => GetEntityRepository<FollowedBlog>();
+
+        private IRepository<LikedBlog> _likedBlogs;
+        public IRepository<LikedBlog> LikedBlogs => GetEntityRepository<LikedBlog>();
+
+        private IRepository<LikedBlogPost> _likedBlogPosts;
+        public IRepository<LikedBlogPost> LikedBlogPosts => GetEntityRepository<LikedBlogPost>();
         public void SaveChanges()
         {
             _applicationDbContext.SaveChanges();

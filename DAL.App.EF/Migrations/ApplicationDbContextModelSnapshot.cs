@@ -186,6 +186,84 @@ namespace DAL.App.EF.Migrations
                     b.ToTable("BlogPostComments");
                 });
 
+            modelBuilder.Entity("Domain.FavoriteCategory", b =>
+                {
+                    b.Property<int>("FavoriteCategoryId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("ApplicationUserId");
+
+                    b.Property<int?>("BlogCategoryId");
+
+                    b.HasKey("FavoriteCategoryId");
+
+                    b.HasIndex("ApplicationUserId");
+
+                    b.HasIndex("BlogCategoryId");
+
+                    b.ToTable("FavoriteCategories");
+                });
+
+            modelBuilder.Entity("Domain.FollowedBlog", b =>
+                {
+                    b.Property<int>("FollowedBlogId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("ApplicationUserId");
+
+                    b.Property<int?>("BlogId");
+
+                    b.Property<DateTime>("FollowedBlogTime");
+
+                    b.HasKey("FollowedBlogId");
+
+                    b.HasIndex("ApplicationUserId");
+
+                    b.HasIndex("BlogId");
+
+                    b.ToTable("FollowedBlogs");
+                });
+
+            modelBuilder.Entity("Domain.LikedBlog", b =>
+                {
+                    b.Property<int>("LikedBlogId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("ApplicationUserId");
+
+                    b.Property<int?>("BlogId");
+
+                    b.Property<DateTime>("LikedBlogTime");
+
+                    b.HasKey("LikedBlogId");
+
+                    b.HasIndex("ApplicationUserId");
+
+                    b.HasIndex("BlogId");
+
+                    b.ToTable("LikedBlogs");
+                });
+
+            modelBuilder.Entity("Domain.LikedBlogPost", b =>
+                {
+                    b.Property<int>("LikedBlogPostId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("ApplicationUserId");
+
+                    b.Property<int?>("BlogPostId");
+
+                    b.Property<DateTime>("LikedBlogPostTime");
+
+                    b.HasKey("LikedBlogPostId");
+
+                    b.HasIndex("ApplicationUserId");
+
+                    b.HasIndex("BlogPostId");
+
+                    b.ToTable("LikedBlogPosts");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -342,6 +420,50 @@ namespace DAL.App.EF.Migrations
 
                     b.HasOne("Domain.BlogPost", "BlogPost")
                         .WithMany("BlogPostComments")
+                        .HasForeignKey("BlogPostId");
+                });
+
+            modelBuilder.Entity("Domain.FavoriteCategory", b =>
+                {
+                    b.HasOne("Domain.ApplicationUser", "ApplicationUser")
+                        .WithMany("FavoriteCategories")
+                        .HasForeignKey("ApplicationUserId");
+
+                    b.HasOne("Domain.BlogCategory", "BlogCategory")
+                        .WithMany()
+                        .HasForeignKey("BlogCategoryId");
+                });
+
+            modelBuilder.Entity("Domain.FollowedBlog", b =>
+                {
+                    b.HasOne("Domain.ApplicationUser", "ApplicationUser")
+                        .WithMany("FollowedBlogs")
+                        .HasForeignKey("ApplicationUserId");
+
+                    b.HasOne("Domain.Blog", "Blog")
+                        .WithMany()
+                        .HasForeignKey("BlogId");
+                });
+
+            modelBuilder.Entity("Domain.LikedBlog", b =>
+                {
+                    b.HasOne("Domain.ApplicationUser", "ApplicationUser")
+                        .WithMany("LikedBlogs")
+                        .HasForeignKey("ApplicationUserId");
+
+                    b.HasOne("Domain.Blog", "Blog")
+                        .WithMany()
+                        .HasForeignKey("BlogId");
+                });
+
+            modelBuilder.Entity("Domain.LikedBlogPost", b =>
+                {
+                    b.HasOne("Domain.ApplicationUser", "ApplicationUser")
+                        .WithMany("LikedBlogPosts")
+                        .HasForeignKey("ApplicationUserId");
+
+                    b.HasOne("Domain.BlogPost", "BlogPost")
+                        .WithMany()
                         .HasForeignKey("BlogPostId");
                 });
 

@@ -13,7 +13,7 @@ namespace VR2Projekt.Controllers.API
 {
     [Produces("application/json")]
     [Route("api/Blogs")]
-   // [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class BlogsController : Controller
     {
         private readonly IBlogService _blogService;

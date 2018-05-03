@@ -12,5 +12,6 @@ namespace BL.Services.Interfaces
         BlogCategoryDTO AddNewBlogCategory(BlogCategoryDTO newBlogCategory);
         BlogCategoryDTO UpdateBlogCategory(int blogCategoryId, BlogCategoryDTO blogCategory);
         void DeleteBlogCategory(int blogCategoryId);
+
     }
 }

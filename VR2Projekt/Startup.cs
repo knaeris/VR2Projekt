@@ -97,6 +97,14 @@ namespace VR2Projekt
             services.AddTransient<IBlogPostCommentFactory, BlogPostCommentFactory>();
             services.AddTransient<IBlogCategoryService, BlogCategoryService>();
             services.AddTransient<IBlogCategoryFactory, BlogCategoryFactory>();
+            services.AddTransient<IFavoriteCategoryService, FavoriteCategoryService>();
+            services.AddTransient<IFavoriteCategoryFactory, FavoriteCategoryFactory>();
+            services.AddTransient<IFollowedBlogService, FollowedBlogService>();
+            services.AddTransient<IFollowedBlogFactory, FollowedBlogFactory>();
+            services.AddTransient<ILikedBlogService, LikedBlogService>();
+            services.AddTransient<ILikedBlogFactory, LikedBlogFactory>();
+            services.AddTransient<ILikedBlogPostService, LikedBlogPostService>();
+            services.AddTransient<ILikedBlogPostFactory, LikedBlogPostFactory>();
 
             //add repos to DI container
             services.AddScoped<IDataContext, ApplicationDbContext>();

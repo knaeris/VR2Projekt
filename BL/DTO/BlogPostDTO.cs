@@ -13,7 +13,7 @@ namespace BL.DTO
         
         public string BlogPostContent { get; set; }
         public int BlogId { get; set; }
-        //public string Blog { get; set; }
+       
         public List<BlogPostCommentDTO> BlogPostComments { get; set; }
         public string ApplicationUserId { get; set; }
 

@@ -13,7 +13,7 @@ namespace BL.DTO
         public string BlogTitle { get; set; }
         public string BlogDescription { get; set; }
       //  public int BlogCategoryId { get; set; }
-       // public string BlogCategory { get; set; }
+       public string BlogCategory { get; set; }
         public List<BlogPostDTO> BlogPosts { get; set; }
         public List<BlogCommentDTO> BlogComments { get; set; }
         public string ApplicationUserId { get; set; }
@@ -26,6 +26,7 @@ namespace BL.DTO
                 BlogId=b.BlogId,
                 BlogTitle=b.BlogTitle,
                 BlogDescription=b.BlogDescription,
+                BlogCategory=b?.BlogCategory?.BlogCategoryName,
                 ApplicationUserId = b.ApplicationUserId
 
             };
