@@ -70,8 +70,10 @@ namespace VR2Projekt.Controllers.API
 
             return Ok(r);
         }
+
+        [AllowAnonymous]
         [HttpDelete("{blogCategoryId:int}")]
-        [ValidateAntiForgeryToken]
+       // [ValidateAntiForgeryToken]
         public void DeleteBlogCategory(int blogCategoryId)
         {
 
