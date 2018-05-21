@@ -38,7 +38,7 @@ namespace VR2Projekt.Controllers.API
         [HttpPost]
         // [ValidateAntiForgeryToken]
         //[EnableCors(origins: "localhost:3000", headers: "*", methods: "*")]
-        public IActionResult AddBlogPost(BlogPostDTO bp)
+        public IActionResult AddBlogPost([FromBody]BlogPostDTO bp)
         {
             bp.ApplicationUserId = User.Identity.GetUserId();
             if (!ModelState.IsValid) return BadRequest();
