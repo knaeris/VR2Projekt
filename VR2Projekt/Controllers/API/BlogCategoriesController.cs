@@ -36,7 +36,7 @@ namespace VR2Projekt.Controllers.API
 
         [AllowAnonymous]
         [HttpGet("{blogCategoryId:int}")]
-        public IActionResult GetBlogCategoryById([FromRoute] int blogCategoryId)
+        public IActionResult GetBlogCategoryById( int blogCategoryId)
         {
             var r = _blogCategoryService.GetBlogCategoryById(blogCategoryId);
             if (r == null) return NotFound();

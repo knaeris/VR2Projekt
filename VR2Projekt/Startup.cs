@@ -26,6 +26,13 @@ using BL.Services.Interfaces;
 using Swashbuckle.AspNetCore.Swagger;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.Logging;
+using System.Web.Http;
+using System.Web.Http.Cors;
+using Microsoft.Owin.Cors;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Cors.Internal;
 
 namespace VR2Projekt
 {
@@ -47,7 +54,7 @@ namespace VR2Projekt
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
-
+            
             services.Configure<IdentityOptions>(options =>
             {
                 // VERY WEAK Password settings for testing
@@ -82,6 +89,7 @@ namespace VR2Projekt
                             Encoding.UTF8.GetBytes(Configuration["Token:Key"])
                             )
                     };
+                   
                 });
 
 
@@ -105,23 +113,69 @@ namespace VR2Projekt
             services.AddTransient<ILikedBlogFactory, LikedBlogFactory>();
             services.AddTransient<ILikedBlogPostService, LikedBlogPostService>();
             services.AddTransient<ILikedBlogPostFactory, LikedBlogPostFactory>();
-
+            services.AddTransient<UserManager<ApplicationUser>>();
             //add repos to DI container
             services.AddScoped<IDataContext, ApplicationDbContext>();
             services.AddSingleton<IRepositoryFactory, EFRepositoryFactory>();
             services.AddScoped<IRepositoryProvider, EFRepositoryProvider>();
             services.AddScoped<IAppUnitOfWork, AppEFUnitOfWork>();
 
+            #region add xml support
+            //Respect browser headers
+            services.AddMvc(options =>
+            {
+                options.RespectBrowserAcceptHeader = true; // false by default
+            });
+
+            services.AddMvc().AddXmlSerializerFormatters();
+            #endregion
+
+            #region jsonconfiguration
+            services.AddMvc().AddJsonOptions(options =>
+            {
+                options.SerializerSettings.ReferenceLoopHandling
+                            = Newtonsoft.Json.ReferenceLoopHandling.Serialize;
+                options.SerializerSettings.PreserveReferencesHandling
+                            = Newtonsoft.Json.PreserveReferencesHandling.Objects;
+                options.SerializerSettings.Formatting
+                            = Newtonsoft.Json.Formatting.Indented;
+            });
+            #endregion
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
             });
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll",
+                    builder =>
+                    {
+                        builder
+                        .AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader();
+                    });
+            });
+
+            services.Configure<MvcOptions>(options =>
+            {
+                options.Filters.Add(new CorsAuthorizationFilterFactory("AllowAll"));
+            });
+
+
             services.AddMvc();
+
+
+            //services.Configure<MvcOptions>(options =>
+            //{
+            //    options.Filters.Add(new CorsAuthorizationFilterFactory("AllowAll"));
+            //});
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             if (env.IsDevelopment())
             {
@@ -138,6 +192,8 @@ namespace VR2Projekt
 
             app.UseAuthentication();
 
+           
+
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();
 
@@ -147,7 +203,8 @@ namespace VR2Projekt
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
 
-
+            app.UseCors("AllowAll");
+            //app.UseCors(options => options.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().AllowCredentials());
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

@@ -26,7 +26,7 @@ namespace DAL.App.EF
                 throw new NullReferenceException("No EF dbcontext found in uow");
             }
         }
-        private IRepository<Blog>  _blogs = null;
+        private IRepository<Blog>  _blogs;
         public IRepository<Blog> Blogs => GetEntityRepository<Blog>(); // _blogs = _blogs ?? new EFBlogRepository(_applicationDbContext);
 
         private IRepository<BlogPost> _blogPost;
@@ -52,6 +52,10 @@ namespace DAL.App.EF
 
         private IRepository<LikedBlogPost> _likedBlogPosts;
         public IRepository<LikedBlogPost> LikedBlogPosts => GetEntityRepository<LikedBlogPost>();
+
+        private IRepository<ApplicationUser> _applicationUsers;
+        public IRepository<ApplicationUser> ApplicationUsers => GetEntityRepository<ApplicationUser>();
+
         public void SaveChanges()
         {
             _applicationDbContext.SaveChanges();

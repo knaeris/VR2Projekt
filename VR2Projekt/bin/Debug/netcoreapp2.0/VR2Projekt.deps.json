@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "0a237034e597940fbd0ab244ff83e745b146202b"
+    "signature": "27ee5138ea844d400fc29ff88027430f580b2ada"
   },
   "compilationOptions": {
     "defines": [
@@ -29,19 +29,59 @@
           "DAL.EF": "1.0.0",
           "DAL.EF.Interfaces": "1.0.0",
           "Domain": "1.0.0",
+          "IdeaTech.System.Web.Mvc.Extensions": "1.0.1",
           "Microsoft.AspNet.Identity.Core": "2.2.1",
+          "Microsoft.AspNet.Identity.EntityFramework": "2.2.1",
+          "Microsoft.AspNet.Identity.Owin": "2.2.1",
+          "Microsoft.AspNet.WebApi": "5.2.6",
+          "Microsoft.AspNet.WebApi.Core": "5.2.6",
+          "Microsoft.AspNet.WebApi.Cors": "5.2.6",
+          "Microsoft.AspNet.WebApi.Owin": "5.2.6",
+          "Microsoft.AspNet.WebApi.WebHost": "5.2.6",
           "Microsoft.AspNetCore.All": "2.0.5",
           "Microsoft.EntityFrameworkCore.Tools": "2.0.1",
           "Microsoft.Extensions.Identity.Stores": "2.0.2",
           "Microsoft.NETCore.App": "2.0.0",
+          "Microsoft.Owin": "4.0.0",
+          "Microsoft.Owin.Cors": "4.0.0",
+          "Microsoft.Owin.Security.Cookies": "4.0.0",
+          "Microsoft.Owin.Security.OAuth": "4.0.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.0.2",
-          "Swashbuckle.AspNetCore": "2.4.0"
+          "Swashbuckle.AspNetCore": "2.4.0",
+          "System.Web.Http.Common": "4.0.20126.16343"
         },
         "runtime": {
           "VR2Projekt.dll": {}
         },
         "compile": {
           "VR2Projekt.dll": {}
+        }
+      },
+      "EntityFramework/6.1.0": {
+        "runtime": {
+          "lib/net45/EntityFramework.SqlServer.dll": {},
+          "lib/net45/EntityFramework.dll": {}
+        },
+        "compile": {
+          "lib/net45/EntityFramework.SqlServer.dll": {},
+          "lib/net45/EntityFramework.dll": {}
+        }
+      },
+      "IdeaTech.System.Web.Mvc.Extensions/1.0.1": {
+        "dependencies": {
+          "Microsoft.AspNet.Mvc": "5.2.3",
+          "Newtonsoft.Json": "10.0.3"
+        },
+        "runtime": {
+          "lib/net46/System.Web.Mvc.Extensions.dll": {}
+        },
+        "resources": {
+          "lib/net46/en-US/System.Web.Mvc.Extensions.resources.dll": {
+            "locale": "en-US"
+          }
+        },
+        "compile": {
+          "lib/net46/System.Web.Mvc.Extensions.dll": {}
         }
       },
       "Libuv/1.10.0": {
@@ -131,12 +171,155 @@
           "lib/netstandard1.6/Microsoft.AI.DependencyCollector.dll": {}
         }
       },
+      "Microsoft.AspNet.Cors/5.2.6": {
+        "runtime": {
+          "lib/net45/System.Web.Cors.dll": {}
+        },
+        "compile": {
+          "lib/net45/System.Web.Cors.dll": {}
+        }
+      },
       "Microsoft.AspNet.Identity.Core/2.2.1": {
         "runtime": {
           "lib/net45/Microsoft.AspNet.Identity.Core.dll": {}
         },
         "compile": {
           "lib/net45/Microsoft.AspNet.Identity.Core.dll": {}
+        }
+      },
+      "Microsoft.AspNet.Identity.EntityFramework/2.2.1": {
+        "dependencies": {
+          "EntityFramework": "6.1.0",
+          "Microsoft.AspNet.Identity.Core": "2.2.1"
+        },
+        "runtime": {
+          "lib/net45/Microsoft.AspNet.Identity.EntityFramework.dll": {}
+        },
+        "compile": {
+          "lib/net45/Microsoft.AspNet.Identity.EntityFramework.dll": {}
+        }
+      },
+      "Microsoft.AspNet.Identity.Owin/2.2.1": {
+        "dependencies": {
+          "Microsoft.AspNet.Identity.Core": "2.2.1",
+          "Microsoft.Owin.Security": "4.0.0",
+          "Microsoft.Owin.Security.Cookies": "4.0.0",
+          "Microsoft.Owin.Security.OAuth": "4.0.0"
+        },
+        "runtime": {
+          "lib/net45/Microsoft.AspNet.Identity.Owin.dll": {}
+        },
+        "compile": {
+          "lib/net45/Microsoft.AspNet.Identity.Owin.dll": {}
+        }
+      },
+      "Microsoft.AspNet.Mvc/5.2.3": {
+        "dependencies": {
+          "Microsoft.AspNet.Razor": "3.2.3",
+          "Microsoft.AspNet.WebPages": "3.2.3"
+        },
+        "runtime": {
+          "lib/net45/System.Web.Mvc.dll": {}
+        },
+        "compile": {
+          "lib/net45/System.Web.Mvc.dll": {}
+        }
+      },
+      "Microsoft.AspNet.Razor/3.2.3": {
+        "runtime": {
+          "lib/net45/System.Web.Razor.dll": {}
+        },
+        "compile": {
+          "lib/net45/System.Web.Razor.dll": {}
+        }
+      },
+      "Microsoft.AspNet.WebApi/5.2.6": {
+        "dependencies": {
+          "Microsoft.AspNet.WebApi.WebHost": "5.2.6"
+        }
+      },
+      "Microsoft.AspNet.WebApi.Client/5.2.6": {
+        "dependencies": {
+          "Newtonsoft.Json": "10.0.3",
+          "Newtonsoft.Json.Bson": "1.0.1"
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Net.Http.Formatting.dll": {}
+        },
+        "compile": {
+          "lib/netstandard2.0/System.Net.Http.Formatting.dll": {}
+        }
+      },
+      "Microsoft.AspNet.WebApi.Core/5.2.6": {
+        "dependencies": {
+          "Microsoft.AspNet.WebApi.Client": "5.2.6"
+        },
+        "runtime": {
+          "lib/net45/System.Web.Http.dll": {}
+        },
+        "compile": {
+          "lib/net45/System.Web.Http.dll": {}
+        }
+      },
+      "Microsoft.AspNet.WebApi.Cors/5.2.6": {
+        "dependencies": {
+          "Microsoft.AspNet.Cors": "5.2.6",
+          "Microsoft.AspNet.WebApi.Core": "5.2.6"
+        },
+        "runtime": {
+          "lib/net45/System.Web.Http.Cors.dll": {}
+        },
+        "compile": {
+          "lib/net45/System.Web.Http.Cors.dll": {}
+        }
+      },
+      "Microsoft.AspNet.WebApi.Owin/5.2.6": {
+        "dependencies": {
+          "Microsoft.AspNet.WebApi.Core": "5.2.6",
+          "Microsoft.Owin": "4.0.0",
+          "Owin": "1.0.0"
+        },
+        "runtime": {
+          "lib/net45/System.Web.Http.Owin.dll": {}
+        },
+        "compile": {
+          "lib/net45/System.Web.Http.Owin.dll": {}
+        }
+      },
+      "Microsoft.AspNet.WebApi.OwinSelfHost/5.2.6": {
+        "dependencies": {
+          "Microsoft.AspNet.WebApi.Owin": "5.2.6",
+          "Microsoft.Owin.Host.HttpListener": "2.0.2",
+          "Microsoft.Owin.Hosting": "2.0.2"
+        }
+      },
+      "Microsoft.AspNet.WebApi.WebHost/5.2.6": {
+        "dependencies": {
+          "Microsoft.AspNet.WebApi.Core": "5.2.6"
+        },
+        "runtime": {
+          "lib/net45/System.Web.Http.WebHost.dll": {}
+        },
+        "compile": {
+          "lib/net45/System.Web.Http.WebHost.dll": {}
+        }
+      },
+      "Microsoft.AspNet.WebPages/3.2.3": {
+        "dependencies": {
+          "Microsoft.AspNet.Razor": "3.2.3",
+          "Microsoft.Web.Infrastructure": "1.0.0"
+        },
+        "runtime": {
+          "lib/net45/System.Web.Helpers.dll": {},
+          "lib/net45/System.Web.WebPages.Deployment.dll": {},
+          "lib/net45/System.Web.WebPages.Razor.dll": {},
+          "lib/net45/System.Web.WebPages.dll": {}
+        },
+        "compile": {
+          "lib/net45/System.Web.Helpers.dll": {},
+          "lib/net45/System.Web.WebPages.Deployment.dll": {},
+          "lib/net45/System.Web.WebPages.Razor.dll": {},
+          "lib/net45/System.Web.WebPages.dll": {}
         }
       },
       "Microsoft.AspNetCore/2.0.1": {
@@ -438,7 +621,7 @@
       "Microsoft.AspNetCore.Authentication.OAuth/2.0.1": {
         "dependencies": {
           "Microsoft.AspNetCore.Authentication": "2.0.1",
-          "Newtonsoft.Json": "10.0.1"
+          "Newtonsoft.Json": "10.0.3"
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.AspNetCore.Authentication.OAuth.dll": {}
@@ -811,7 +994,7 @@
       "Microsoft.AspNetCore.JsonPatch/2.0.0": {
         "dependencies": {
           "Microsoft.CSharp": "4.4.0",
-          "Newtonsoft.Json": "10.0.1"
+          "Newtonsoft.Json": "10.0.3"
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.AspNetCore.JsonPatch.dll": {}
@@ -1069,7 +1252,7 @@
         "dependencies": {
           "Microsoft.AspNetCore.Hosting.Abstractions": "2.0.1",
           "Microsoft.Extensions.Logging.Console": "2.0.0",
-          "Newtonsoft.Json": "10.0.1"
+          "Newtonsoft.Json": "10.0.3"
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.AspNetCore.NodeServices.dll": {}
@@ -1374,7 +1557,7 @@
           "Microsoft.Rest.ClientRuntime": "2.3.8",
           "Microsoft.Rest.ClientRuntime.Azure": "3.3.7",
           "NETStandard.Library": "2.0.0",
-          "Newtonsoft.Json": "10.0.1",
+          "Newtonsoft.Json": "10.0.3",
           "System.Net.Http": "4.3.0"
         },
         "runtime": {
@@ -1388,7 +1571,7 @@
         "dependencies": {
           "Microsoft.NETCore.Platforms": "2.0.0",
           "NETStandard.Library": "2.0.0",
-          "Newtonsoft.Json": "10.0.1",
+          "Newtonsoft.Json": "10.0.3",
           "System.Collections": "4.3.0",
           "System.Collections.Concurrent": "4.3.0",
           "System.Linq": "4.3.0",
@@ -1854,7 +2037,7 @@
         "dependencies": {
           "Microsoft.Extensions.Configuration": "2.0.0",
           "Microsoft.Extensions.Configuration.FileExtensions": "2.0.0",
-          "Newtonsoft.Json": "10.0.1"
+          "Newtonsoft.Json": "10.0.3"
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.Extensions.Configuration.Json.dll": {}
@@ -1909,7 +2092,7 @@
       "Microsoft.Extensions.DependencyModel/2.0.3": {
         "dependencies": {
           "Microsoft.DotNet.PlatformAbstractions": "2.0.3",
-          "Newtonsoft.Json": "10.0.1",
+          "Newtonsoft.Json": "10.0.3",
           "System.Diagnostics.Debug": "4.3.0",
           "System.Dynamic.Runtime": "4.3.0",
           "System.Linq": "4.3.0"
@@ -2117,7 +2300,7 @@
       "Microsoft.Extensions.Logging.EventSource/2.0.0": {
         "dependencies": {
           "Microsoft.Extensions.Logging": "2.0.1",
-          "Newtonsoft.Json": "10.0.1"
+          "Newtonsoft.Json": "10.0.3"
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.Extensions.Logging.EventSource.dll": {}
@@ -2265,7 +2448,7 @@
       "Microsoft.IdentityModel.Tokens/5.1.4": {
         "dependencies": {
           "Microsoft.IdentityModel.Logging": "1.1.4",
-          "Newtonsoft.Json": "10.0.1",
+          "Newtonsoft.Json": "10.0.3",
           "System.Collections": "4.3.0",
           "System.Diagnostics.Tools": "4.3.0",
           "System.Runtime": "4.3.0",
@@ -2299,10 +2482,105 @@
         }
       },
       "Microsoft.NETCore.Targets/1.1.0": {},
+      "Microsoft.Owin/4.0.0": {
+        "dependencies": {
+          "Owin": "1.0.0"
+        },
+        "runtime": {
+          "lib/net451/Microsoft.Owin.dll": {}
+        },
+        "compile": {
+          "lib/net451/Microsoft.Owin.dll": {}
+        }
+      },
+      "Microsoft.Owin.Cors/4.0.0": {
+        "dependencies": {
+          "Microsoft.AspNet.Cors": "5.2.6",
+          "Microsoft.Owin": "4.0.0",
+          "Owin": "1.0.0"
+        },
+        "runtime": {
+          "lib/net451/Microsoft.Owin.Cors.dll": {}
+        },
+        "compile": {
+          "lib/net451/Microsoft.Owin.Cors.dll": {}
+        }
+      },
+      "Microsoft.Owin.Host.HttpListener/2.0.2": {
+        "runtime": {
+          "lib/net45/Microsoft.Owin.Host.HttpListener.dll": {}
+        },
+        "compile": {
+          "lib/net45/Microsoft.Owin.Host.HttpListener.dll": {}
+        }
+      },
+      "Microsoft.Owin.Host.SystemWeb/4.0.0": {
+        "dependencies": {
+          "Microsoft.Owin": "4.0.0",
+          "Owin": "1.0.0"
+        },
+        "runtime": {
+          "lib/net451/Microsoft.Owin.Host.SystemWeb.dll": {}
+        },
+        "compile": {
+          "lib/net451/Microsoft.Owin.Host.SystemWeb.dll": {}
+        }
+      },
+      "Microsoft.Owin.Hosting/2.0.2": {
+        "dependencies": {
+          "Microsoft.Owin": "4.0.0",
+          "Owin": "1.0.0"
+        },
+        "runtime": {
+          "lib/net45/Microsoft.Owin.Hosting.dll": {}
+        },
+        "compile": {
+          "lib/net45/Microsoft.Owin.Hosting.dll": {}
+        }
+      },
+      "Microsoft.Owin.Security/4.0.0": {
+        "dependencies": {
+          "Microsoft.Owin": "4.0.0",
+          "Owin": "1.0.0"
+        },
+        "runtime": {
+          "lib/net451/Microsoft.Owin.Security.dll": {}
+        },
+        "compile": {
+          "lib/net451/Microsoft.Owin.Security.dll": {}
+        }
+      },
+      "Microsoft.Owin.Security.Cookies/4.0.0": {
+        "dependencies": {
+          "Microsoft.Owin": "4.0.0",
+          "Microsoft.Owin.Security": "4.0.0",
+          "Owin": "1.0.0"
+        },
+        "runtime": {
+          "lib/net451/Microsoft.Owin.Security.Cookies.dll": {}
+        },
+        "compile": {
+          "lib/net451/Microsoft.Owin.Security.Cookies.dll": {}
+        }
+      },
+      "Microsoft.Owin.Security.OAuth/4.0.0": {
+        "dependencies": {
+          "Microsoft.Owin": "4.0.0",
+          "Microsoft.Owin.Security": "4.0.0",
+          "Newtonsoft.Json": "10.0.3",
+          "Owin": "1.0.0"
+        },
+        "runtime": {
+          "lib/net451/Microsoft.Owin.Security.OAuth.dll": {}
+        },
+        "compile": {
+          "lib/net451/Microsoft.Owin.Security.OAuth.dll": {}
+        }
+      },
       "Microsoft.Rest.ClientRuntime/2.3.8": {
         "dependencies": {
           "NETStandard.Library": "2.0.0",
-          "Newtonsoft.Json": "10.0.1"
+          "Newtonsoft.Json": "10.0.3"
         },
         "runtime": {
           "lib/netstandard1.4/Microsoft.Rest.ClientRuntime.dll": {}
@@ -2315,7 +2593,7 @@
         "dependencies": {
           "Microsoft.Rest.ClientRuntime": "2.3.8",
           "NETStandard.Library": "2.0.0",
-          "Newtonsoft.Json": "10.0.1"
+          "Newtonsoft.Json": "10.0.3"
         },
         "runtime": {
           "lib/netstandard1.4/Microsoft.Rest.ClientRuntime.Azure.dll": {}
@@ -2352,7 +2630,7 @@
       },
       "Microsoft.VisualStudio.Web.CodeGeneration.Contracts/2.0.2": {
         "dependencies": {
-          "Newtonsoft.Json": "10.0.1"
+          "Newtonsoft.Json": "10.0.3"
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.VisualStudio.Web.CodeGeneration.Contracts.dll": {}
@@ -2365,7 +2643,7 @@
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection": "2.0.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Templating": "2.0.2",
-          "Newtonsoft.Json": "10.0.1"
+          "Newtonsoft.Json": "10.0.3"
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.VisualStudio.Web.CodeGeneration.Core.dll": {}
@@ -2413,7 +2691,7 @@
         "dependencies": {
           "Microsoft.CodeAnalysis.CSharp.Workspaces": "2.3.1",
           "Microsoft.VisualStudio.Web.CodeGeneration.Contracts": "2.0.2",
-          "Newtonsoft.Json": "10.0.1",
+          "Newtonsoft.Json": "10.0.3",
           "NuGet.Frameworks": "4.0.0"
         },
         "runtime": {
@@ -2432,6 +2710,14 @@
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll": {}
+        }
+      },
+      "Microsoft.Web.Infrastructure/1.0.0": {
+        "runtime": {
+          "lib/net40/Microsoft.Web.Infrastructure.dll": {}
+        },
+        "compile": {
+          "lib/net40/Microsoft.Web.Infrastructure.dll": {}
         }
       },
       "Microsoft.Win32.Primitives/4.3.0": {
@@ -2461,33 +2747,13 @@
           "ref/netstandard2.0/Microsoft.Win32.Registry.dll": {}
         }
       },
-      "Newtonsoft.Json/10.0.1": {
+      "Newtonsoft.Json/10.0.3": {
         "dependencies": {
           "Microsoft.CSharp": "4.4.0",
-          "System.Collections": "4.3.0",
+          "NETStandard.Library": "2.0.0",
           "System.ComponentModel.TypeConverter": "4.3.0",
-          "System.Diagnostics.Debug": "4.3.0",
-          "System.Dynamic.Runtime": "4.3.0",
-          "System.Globalization": "4.3.0",
-          "System.IO": "4.3.0",
-          "System.Linq": "4.3.0",
-          "System.Linq.Expressions": "4.3.0",
-          "System.ObjectModel": "4.3.0",
-          "System.Reflection": "4.3.0",
-          "System.Reflection.Extensions": "4.3.0",
-          "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
-          "System.Runtime.Extensions": "4.3.0",
-          "System.Runtime.Numerics": "4.3.0",
           "System.Runtime.Serialization.Formatters": "4.3.0",
           "System.Runtime.Serialization.Primitives": "4.3.0",
-          "System.Text.Encoding": "4.3.0",
-          "System.Text.Encoding.Extensions": "4.3.0",
-          "System.Text.RegularExpressions": "4.3.0",
-          "System.Threading": "4.3.0",
-          "System.Threading.Tasks": "4.3.0",
-          "System.Xml.ReaderWriter": "4.3.0",
-          "System.Xml.XDocument": "4.3.0",
           "System.Xml.XmlDocument": "4.3.0"
         },
         "runtime": {
@@ -2500,7 +2766,7 @@
       "Newtonsoft.Json.Bson/1.0.1": {
         "dependencies": {
           "NETStandard.Library": "2.0.0",
-          "Newtonsoft.Json": "10.0.1"
+          "Newtonsoft.Json": "10.0.3"
         },
         "runtime": {
           "lib/netstandard1.3/Newtonsoft.Json.Bson.dll": {}
@@ -2518,6 +2784,14 @@
         },
         "compile": {
           "lib/netstandard1.3/NuGet.Frameworks.dll": {}
+        }
+      },
+      "Owin/1.0.0": {
+        "runtime": {
+          "lib/net40/Owin.dll": {}
+        },
+        "compile": {
+          "lib/net40/Owin.dll": {}
         }
       },
       "Remotion.Linq/2.1.1": {
@@ -2857,7 +3131,7 @@
           "Microsoft.AspNetCore.StaticFiles": "2.0.1",
           "Microsoft.Extensions.FileProviders.Embedded": "2.0.0",
           "NETStandard.Library": "2.0.0",
-          "Newtonsoft.Json": "10.0.1"
+          "Newtonsoft.Json": "10.0.3"
         },
         "runtime": {
           "lib/netstandard1.6/Swashbuckle.AspNetCore.SwaggerUI.dll": {}
@@ -4019,6 +4293,14 @@
         }
       },
       "System.ValueTuple/4.4.0": {},
+      "System.Web.Http.Common/4.0.20126.16343": {
+        "runtime": {
+          "lib/net40/System.Web.Http.Common.dll": {}
+        },
+        "compile": {
+          "lib/net40/System.Web.Http.Common.dll": {}
+        }
+      },
       "System.Xml.ReaderWriter/4.3.0": {
         "dependencies": {
           "System.Collections": "4.3.0",
@@ -4119,7 +4401,7 @@
         "dependencies": {
           "Microsoft.Data.OData": "5.8.2",
           "NETStandard.Library": "2.0.0",
-          "Newtonsoft.Json": "10.0.1",
+          "Newtonsoft.Json": "10.0.3",
           "System.Spatial": "5.8.2"
         },
         "runtime": {
@@ -4135,7 +4417,17 @@
           "DAL.App.Interfaces": "1.0.0",
           "DAL.EF": "1.0.0",
           "DAL.EF.Interfaces": "1.0.0",
-          "Domain": "1.0.0"
+          "Domain": "1.0.0",
+          "Microsoft.AspNet.Identity.EntityFramework": "2.2.1",
+          "Microsoft.AspNet.Identity.Owin": "2.2.1",
+          "Microsoft.AspNet.WebApi": "5.2.6",
+          "Microsoft.AspNet.WebApi.Core": "5.2.6",
+          "Microsoft.AspNet.WebApi.Cors": "5.2.6",
+          "Microsoft.AspNet.WebApi.Owin": "5.2.6",
+          "Microsoft.AspNet.WebApi.OwinSelfHost": "5.2.6",
+          "Microsoft.AspNet.WebApi.WebHost": "5.2.6",
+          "Microsoft.Owin.Cors": "4.0.0",
+          "Microsoft.Owin.Host.SystemWeb": "4.0.0"
         },
         "runtime": {
           "BL.dll": {}
@@ -4149,9 +4441,18 @@
           "DAL.App.Interfaces": "1.0.0",
           "DAL.EF": "1.0.0",
           "Domain": "1.0.0",
+          "Microsoft.AspNet.Identity.EntityFramework": "2.2.1",
+          "Microsoft.AspNet.Identity.Owin": "2.2.1",
+          "Microsoft.AspNet.WebApi": "5.2.6",
+          "Microsoft.AspNet.WebApi.Core": "5.2.6",
+          "Microsoft.AspNet.WebApi.Cors": "5.2.6",
+          "Microsoft.AspNet.WebApi.Owin": "5.2.6",
+          "Microsoft.AspNet.WebApi.OwinSelfHost": "5.2.6",
+          "Microsoft.AspNet.WebApi.WebHost": "5.2.6",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "2.0.1",
           "Microsoft.EntityFrameworkCore": "2.0.1",
-          "Microsoft.EntityFrameworkCore.SqlServer": "2.0.1"
+          "Microsoft.EntityFrameworkCore.SqlServer": "2.0.1",
+          "Microsoft.Owin.Cors": "4.0.0"
         },
         "runtime": {
           "DAL.App.EF.dll": {}
@@ -4163,7 +4464,17 @@
       "DAL.App.Interfaces/1.0.0": {
         "dependencies": {
           "DAL.EF.Interfaces": "1.0.0",
-          "Domain": "1.0.0"
+          "Domain": "1.0.0",
+          "Microsoft.AspNet.Identity.EntityFramework": "2.2.1",
+          "Microsoft.AspNet.Identity.Owin": "2.2.1",
+          "Microsoft.AspNet.WebApi": "5.2.6",
+          "Microsoft.AspNet.WebApi.Core": "5.2.6",
+          "Microsoft.AspNet.WebApi.Cors": "5.2.6",
+          "Microsoft.AspNet.WebApi.Owin": "5.2.6",
+          "Microsoft.AspNet.WebApi.OwinSelfHost": "5.2.6",
+          "Microsoft.AspNet.WebApi.WebHost": "5.2.6",
+          "Microsoft.Owin.Cors": "4.0.0",
+          "Microsoft.Owin.Host.SystemWeb": "4.0.0"
         },
         "runtime": {
           "DAL.App.Interfaces.dll": {}
@@ -4175,7 +4486,15 @@
       "DAL.EF/1.0.0": {
         "dependencies": {
           "DAL.EF.Interfaces": "1.0.0",
-          "Microsoft.EntityFrameworkCore": "2.0.1"
+          "Microsoft.AspNet.Identity.EntityFramework": "2.2.1",
+          "Microsoft.AspNet.Identity.Owin": "2.2.1",
+          "Microsoft.AspNet.WebApi": "5.2.6",
+          "Microsoft.AspNet.WebApi.Core": "5.2.6",
+          "Microsoft.AspNet.WebApi.Cors": "5.2.6",
+          "Microsoft.AspNet.WebApi.Owin": "5.2.6",
+          "Microsoft.AspNet.WebApi.WebHost": "5.2.6",
+          "Microsoft.EntityFrameworkCore": "2.0.1",
+          "Microsoft.Owin.Cors": "4.0.0"
         },
         "runtime": {
           "DAL.EF.dll": {}
@@ -4185,6 +4504,17 @@
         }
       },
       "DAL.EF.Interfaces/1.0.0": {
+        "dependencies": {
+          "Microsoft.AspNet.Identity.EntityFramework": "2.2.1",
+          "Microsoft.AspNet.Identity.Owin": "2.2.1",
+          "Microsoft.AspNet.WebApi": "5.2.6",
+          "Microsoft.AspNet.WebApi.Core": "5.2.6",
+          "Microsoft.AspNet.WebApi.Cors": "5.2.6",
+          "Microsoft.AspNet.WebApi.Owin": "5.2.6",
+          "Microsoft.AspNet.WebApi.OwinSelfHost": "5.2.6",
+          "Microsoft.AspNet.WebApi.WebHost": "5.2.6",
+          "Microsoft.Owin.Cors": "4.0.0"
+        },
         "runtime": {
           "DAL.EF.Interfaces.dll": {}
         },
@@ -4194,7 +4524,17 @@
       },
       "Domain/1.0.0": {
         "dependencies": {
-          "Microsoft.Extensions.Identity.Stores": "2.0.2"
+          "Microsoft.AspNet.Identity.Core": "2.2.1",
+          "Microsoft.AspNet.Identity.EntityFramework": "2.2.1",
+          "Microsoft.AspNet.Identity.Owin": "2.2.1",
+          "Microsoft.AspNet.WebApi": "5.2.6",
+          "Microsoft.AspNet.WebApi.Core": "5.2.6",
+          "Microsoft.AspNet.WebApi.Cors": "5.2.6",
+          "Microsoft.AspNet.WebApi.Owin": "5.2.6",
+          "Microsoft.AspNet.WebApi.WebHost": "5.2.6",
+          "Microsoft.Extensions.Identity.Stores": "2.0.2",
+          "Microsoft.Owin.Cors": "4.0.0",
+          "Microsoft.Owin.Host.SystemWeb": "4.0.0"
         },
         "runtime": {
           "Domain.dll": {}
@@ -4387,6 +4727,20 @@
       "serviceable": false,
       "sha512": ""
     },
+    "EntityFramework/6.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-u/M0OEfqxTUsL5BwzD66eBGm278/ozqdLK3JvMO6QwUxxc+z7ZUkTYm4suDhWRqzkc6mOhvXDQY5dZUwbldxyQ==",
+      "path": "entityframework/6.1.0",
+      "hashPath": "entityframework.6.1.0.nupkg.sha512"
+    },
+    "IdeaTech.System.Web.Mvc.Extensions/1.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/RA74t/XSBLUNjTbg7QEz7OAAxiRjSSQRm6rjmSfxx+utINh1HUxAz7UIBSIxYI2OMMvbsH2BFJ/3Vhxr3u09A==",
+      "path": "ideatech.system.web.mvc.extensions/1.0.1",
+      "hashPath": "ideatech.system.web.mvc.extensions.1.0.1.nupkg.sha512"
+    },
     "Libuv/1.10.0": {
       "type": "package",
       "serviceable": true,
@@ -4415,12 +4769,103 @@
       "path": "microsoft.applicationinsights.dependencycollector/2.4.1",
       "hashPath": "microsoft.applicationinsights.dependencycollector.2.4.1.nupkg.sha512"
     },
+    "Microsoft.AspNet.Cors/5.2.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-9aZAbHBY8StAwehBYWPs6ewrc4hdyaj6O0cxgPme5vU9eYNz9kAfbX5z6I1LFsnpWzthpsikcJTE1OyAl/JzuQ==",
+      "path": "microsoft.aspnet.cors/5.2.6",
+      "hashPath": "microsoft.aspnet.cors.5.2.6.nupkg.sha512"
+    },
     "Microsoft.AspNet.Identity.Core/2.2.1": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-jjurNglpmcv0SLBd4Fmar8ZoJ2yqfTf6iuP3p8wVH7Nvanfo8l3qTBzq3qRQz2BQlb6iXJiDWPjcnIImVz512g==",
       "path": "microsoft.aspnet.identity.core/2.2.1",
       "hashPath": "microsoft.aspnet.identity.core.2.2.1.nupkg.sha512"
+    },
+    "Microsoft.AspNet.Identity.EntityFramework/2.2.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-g3tCS3vZ+hPjqrGrkq2hpl2Wc5Ltaj+kInZM80uENHldTHmrvCpVXvTXcvTt7HU3vupjmYFfNWVFRWCypNZgug==",
+      "path": "microsoft.aspnet.identity.entityframework/2.2.1",
+      "hashPath": "microsoft.aspnet.identity.entityframework.2.2.1.nupkg.sha512"
+    },
+    "Microsoft.AspNet.Identity.Owin/2.2.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Cz/dqC85+6bgPj9Mt1qGLJ+v8HdTqXTMe1ms4e8pzPXJjDJw3DK7XtimtDtWwiDs63vnIDgy195TByV9wxEwjA==",
+      "path": "microsoft.aspnet.identity.owin/2.2.1",
+      "hashPath": "microsoft.aspnet.identity.owin.2.2.1.nupkg.sha512"
+    },
+    "Microsoft.AspNet.Mvc/5.2.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-i8jZf5QrbcFmjiYWRD7o7qTak/oXKxV80MgP4cZ33A8GC0RBtBIdZ1VHaloGUg+qsHUz5rVkGpwenM+ugDz5PA==",
+      "path": "microsoft.aspnet.mvc/5.2.3",
+      "hashPath": "microsoft.aspnet.mvc.5.2.3.nupkg.sha512"
+    },
+    "Microsoft.AspNet.Razor/3.2.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-leta+Q73O7+pR8ThTqXmwaNMSqwZQQ3BHfpUHd8S1XaUWe1jRVLitMHqo1AmY7wPNLyankPA1beiUKEGj8Q3Dw==",
+      "path": "microsoft.aspnet.razor/3.2.3",
+      "hashPath": "microsoft.aspnet.razor.3.2.3.nupkg.sha512"
+    },
+    "Microsoft.AspNet.WebApi/5.2.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-98urF4oTw2+rtcd6Mq/neuWh1YaeHfaiqUSMe31bTsjkOaKbxUfyOpc+Ny9DHwPcg9WAqOgF9pEYEBhbSCbFIA==",
+      "path": "microsoft.aspnet.webapi/5.2.6",
+      "hashPath": "microsoft.aspnet.webapi.5.2.6.nupkg.sha512"
+    },
+    "Microsoft.AspNet.WebApi.Client/5.2.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-rMDlyePoxggkmN/qgha1+BR2Uy+dOr38xKCQOPfVNKGY07R2nYJGMTKJFE1XFgwD70RYUNazf2fqutjJF18XgQ==",
+      "path": "microsoft.aspnet.webapi.client/5.2.6",
+      "hashPath": "microsoft.aspnet.webapi.client.5.2.6.nupkg.sha512"
+    },
+    "Microsoft.AspNet.WebApi.Core/5.2.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-QMFixs/MvKZXjfUbV0gXxF85LKi+keu/zJKv13upg/JlcxJ+wdLSYzyHO/sgPPUuFVstgndK6Zt3VduWeqFmHQ==",
+      "path": "microsoft.aspnet.webapi.core/5.2.6",
+      "hashPath": "microsoft.aspnet.webapi.core.5.2.6.nupkg.sha512"
+    },
+    "Microsoft.AspNet.WebApi.Cors/5.2.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ZQU40+mCROg6cRE3tydEIuZBC7fh8ZueJmiz3HpaRoTriZVond1rLCcDu/PJM7FQJa0k8ut7iRUTgB1kU5yWFw==",
+      "path": "microsoft.aspnet.webapi.cors/5.2.6",
+      "hashPath": "microsoft.aspnet.webapi.cors.5.2.6.nupkg.sha512"
+    },
+    "Microsoft.AspNet.WebApi.Owin/5.2.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Ky6Oc072KIVOcgtX5ilsWHbRUwp9WYE97ZFj2YRiDqpsTjTqo38Xsao6zejEdFpdobbAlquCM661ohqS2C68oQ==",
+      "path": "microsoft.aspnet.webapi.owin/5.2.6",
+      "hashPath": "microsoft.aspnet.webapi.owin.5.2.6.nupkg.sha512"
+    },
+    "Microsoft.AspNet.WebApi.OwinSelfHost/5.2.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-z9UfKUiznuj8gAjnRPmqSIG70SqHxaJ7f+wjrHCbaw3Y6KdmXu9csltGVnJj53Gq2YMNwcMg1hmnEqsKXrTIdA==",
+      "path": "microsoft.aspnet.webapi.owinselfhost/5.2.6",
+      "hashPath": "microsoft.aspnet.webapi.owinselfhost.5.2.6.nupkg.sha512"
+    },
+    "Microsoft.AspNet.WebApi.WebHost/5.2.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ny16MQ4+96uvpirNl3psecTqb3joOh0X0RS/6UQYt5oty67gV2GhPn07nt57E3/2tCmnhoSOKl9/Shenp2m3kA==",
+      "path": "microsoft.aspnet.webapi.webhost/5.2.6",
+      "hashPath": "microsoft.aspnet.webapi.webhost.5.2.6.nupkg.sha512"
+    },
+    "Microsoft.AspNet.WebPages/3.2.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-zbtxBERla5RE/mhftwbrXOzc0r6lh8WcnjpGW7QQe+PvSDDx1BgsTUGzfCXO/vJznHNpY5oCSYLt8Q5vUu7F0g==",
+      "path": "microsoft.aspnet.webpages/3.2.3",
+      "hashPath": "microsoft.aspnet.webpages.3.2.3.nupkg.sha512"
     },
     "Microsoft.AspNetCore/2.0.1": {
       "type": "package",
@@ -5507,6 +5952,62 @@
       "path": "microsoft.netcore.targets/1.1.0",
       "hashPath": "microsoft.netcore.targets.1.1.0.nupkg.sha512"
     },
+    "Microsoft.Owin/4.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-3TNVMkgF+yhesPYwq67ZOcLGtfKEupNNXcqVO4FRNjkQ1v0gBNb3k8CSuJonrCC8EAUp+OeUYrDTQePiyaVzpw==",
+      "path": "microsoft.owin/4.0.0",
+      "hashPath": "microsoft.owin.4.0.0.nupkg.sha512"
+    },
+    "Microsoft.Owin.Cors/4.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-eHEqyQbLgDCu2sg1H5iEh5syKGHk0X3wBkwrkLQ0mrEkr73F2/b3NtswdI+99QmECrqN4UXZmoIIjOdy/miZLw==",
+      "path": "microsoft.owin.cors/4.0.0",
+      "hashPath": "microsoft.owin.cors.4.0.0.nupkg.sha512"
+    },
+    "Microsoft.Owin.Host.HttpListener/2.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-FvjlLadWzpKE2fZeHoa/d1krcVQ7U5/+D+HC3KL+v+jYyvFsFIobtROX0bTgqWkFYdhS3+AWveck63m4LE6SuA==",
+      "path": "microsoft.owin.host.httplistener/2.0.2",
+      "hashPath": "microsoft.owin.host.httplistener.2.0.2.nupkg.sha512"
+    },
+    "Microsoft.Owin.Host.SystemWeb/4.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-7zRXPcjn1OwHrhJ71KjfU07B//xxBhK3PfYZxVKDVdv1DhDPDAMAshmW1h7sFMcT7gLvSp78uDcKSucpuccCxw==",
+      "path": "microsoft.owin.host.systemweb/4.0.0",
+      "hashPath": "microsoft.owin.host.systemweb.4.0.0.nupkg.sha512"
+    },
+    "Microsoft.Owin.Hosting/2.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-FH94pnDTejmN+VicQEKYl6J6L4wMSlDYY61Yykhsc7ruJVUIP2wrts67vkyalbHcqaGNCdpYsChd7IOpXUcDzQ==",
+      "path": "microsoft.owin.hosting/2.0.2",
+      "hashPath": "microsoft.owin.hosting.2.0.2.nupkg.sha512"
+    },
+    "Microsoft.Owin.Security/4.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-utXSauY1N+toBsOkrSTN/YL3XknbwVTWIQHo4V7IKTcTiay2r9to0yJK4HluqC5KDuUwkjWdVOru/6j/2JjDnw==",
+      "path": "microsoft.owin.security/4.0.0",
+      "hashPath": "microsoft.owin.security.4.0.0.nupkg.sha512"
+    },
+    "Microsoft.Owin.Security.Cookies/4.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-HsSJra7A5S36GHrf5W9gflkULNyTTS3qc+kJYE22DJQ1Ap1M0k0vMwZUzea7J3SEcl7+KeET7dX0qzZn43rt4w==",
+      "path": "microsoft.owin.security.cookies/4.0.0",
+      "hashPath": "microsoft.owin.security.cookies.4.0.0.nupkg.sha512"
+    },
+    "Microsoft.Owin.Security.OAuth/4.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-O5QhUEb7LVXCl/4lasHpd48raGqSQdBk5Z8rojFGcDa90n4u15DTPaNtQGje4Oh+bhSdQjvaoW2kKb8B5szDIw==",
+      "path": "microsoft.owin.security.oauth/4.0.0",
+      "hashPath": "microsoft.owin.security.oauth.4.0.0.nupkg.sha512"
+    },
     "Microsoft.Rest.ClientRuntime/2.3.8": {
       "type": "package",
       "serviceable": true,
@@ -5584,6 +6085,13 @@
       "path": "microsoft.visualstudio.web.codegenerators.mvc/2.0.2",
       "hashPath": "microsoft.visualstudio.web.codegenerators.mvc.2.0.2.nupkg.sha512"
     },
+    "Microsoft.Web.Infrastructure/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-FNmvLn5m2LTU/Rs2KWVo0SIIh9Ek+U0ojex7xeDaSHw/zgEP77A8vY5cVWgUtBGS8MJfDGNn8rpXJWEIQaPwTg==",
+      "path": "microsoft.web.infrastructure/1.0.0",
+      "hashPath": "microsoft.web.infrastructure.1.0.0.nupkg.sha512"
+    },
     "Microsoft.Win32.Primitives/4.3.0": {
       "type": "package",
       "serviceable": true,
@@ -5598,12 +6106,12 @@
       "path": "microsoft.win32.registry/4.4.0",
       "hashPath": "microsoft.win32.registry.4.4.0.nupkg.sha512"
     },
-    "Newtonsoft.Json/10.0.1": {
+    "Newtonsoft.Json/10.0.3": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-ebWzW9j2nwxQeBo59As2TYn7nYr9BHicqqCwHOD1Vdo+50HBtLPuqdiCYJcLdTRknpYis/DSEOQz5KmZxwrIAg==",
-      "path": "newtonsoft.json/10.0.1",
-      "hashPath": "newtonsoft.json.10.0.1.nupkg.sha512"
+      "sha512": "sha512-hSXaFmh7hNCuEoC4XNY5DrRkLDzYHqPx/Ik23R4J86Z7PE/Y6YidhG602dFVdLBRSdG6xp9NabH3dXpcoxWvww==",
+      "path": "newtonsoft.json/10.0.3",
+      "hashPath": "newtonsoft.json.10.0.3.nupkg.sha512"
     },
     "Newtonsoft.Json.Bson/1.0.1": {
       "type": "package",
@@ -5618,6 +6126,13 @@
       "sha512": "sha512-WCkN68c8q+USG+Ot1MmBDH+9DUo5dk7UB0QDMiwCYhrH7ZoFLKFGGNzJ8C3LTR1DvB1LW9BOxKeznnZznKiCTA==",
       "path": "nuget.frameworks/4.0.0",
       "hashPath": "nuget.frameworks.4.0.0.nupkg.sha512"
+    },
+    "Owin/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-OseTFniKmyp76mEzOBwIKGBRS5eMoYNkMKaMXOpxx9jv88+b6mh1rSaw43vjBOItNhaLFG3d0a20PfHyibH5sw==",
+      "path": "owin/1.0.0",
+      "hashPath": "owin.1.0.0.nupkg.sha512"
     },
     "Remotion.Linq/2.1.1": {
       "type": "package",
@@ -6500,6 +7015,13 @@
       "sha512": "sha512-BahUww/+mdP4ARCAh2RQhQTg13wYLVrBb9SYVgW8ZlrwjraGCXHGjo0oIiUfZ34LUZkMMR+RAzR7dEY4S1HeQQ==",
       "path": "system.valuetuple/4.4.0",
       "hashPath": "system.valuetuple.4.4.0.nupkg.sha512"
+    },
+    "System.Web.Http.Common/4.0.20126.16343": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-3tybnaxSQAWu2aLSAh+7PRZ8Cw4f/DIECPJZ5yBcnm5sQKjr95zViCasYH3p6Z1hxATSTmlecvCcvlt/FDy+8w==",
+      "path": "system.web.http.common/4.0.20126.16343",
+      "hashPath": "system.web.http.common.4.0.20126.16343.nupkg.sha512"
     },
     "System.Xml.ReaderWriter/4.3.0": {
       "type": "package",

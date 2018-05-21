@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web.Http.Cors;
+using System.Web.Http.Description;
+using System.Web.Http.Filters;
 using BL.DTO;
 using BL.Services.Interfaces;
 using Microsoft.AspNet.Identity;
@@ -12,9 +15,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace VR2Projekt.Controllers.API
 {
+    [Consumes("application/json")]
     [Produces("application/json")]
     [Route("api/BlogPosts")]
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+ //   [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class BlogPostsController : Controller
     {
         private readonly IBlogPostService _blogPostService;
@@ -30,10 +34,11 @@ namespace VR2Projekt.Controllers.API
         {
             return _blogPostService.GetAllBlogPosts();
         }
-        
+        [AllowAnonymous]
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult AddBlogPost([FromBody]BlogPostDTO bp)
+        // [ValidateAntiForgeryToken]
+        //[EnableCors(origins: "localhost:3000", headers: "*", methods: "*")]
+        public IActionResult AddBlogPost(BlogPostDTO bp)
         {
             bp.ApplicationUserId = User.Identity.GetUserId();
             if (!ModelState.IsValid) return BadRequest();
@@ -68,4 +73,6 @@ namespace VR2Projekt.Controllers.API
             _blogPostService.DeleteBlogPost(blogPostId);
         }
     }
+   
+    
 }

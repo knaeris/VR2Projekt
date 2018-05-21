@@ -33,7 +33,7 @@ namespace VR2Projekt.Controllers.API
        
         [AllowAnonymous]
         [HttpPost]
-        [ValidateAntiForgeryToken]
+       // [ValidateAntiForgeryToken]
         public IActionResult AddBlog([FromBody]BlogDTO b)
         {
 
@@ -51,8 +51,9 @@ namespace VR2Projekt.Controllers.API
             if (r == null) return NotFound();
             return Ok(r);
         }
+        [AllowAnonymous]
         [HttpPut("{blogId:int}")]
-        [ValidateAntiForgeryToken]
+       // [ValidateAntiForgeryToken]
         public IActionResult UpdateBlog(int blogId, [FromBody] BlogDTO b)
         {
             if (!ModelState.IsValid) return BadRequest();

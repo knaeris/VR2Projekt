@@ -23,5 +23,6 @@ namespace DAL.App.Interfaces
         IRepository<FollowedBlog> FollowedBlogs { get; }
         IRepository<LikedBlog> LikedBlogs { get; }
         IRepository<LikedBlogPost> LikedBlogPosts { get; }
+        IRepository<ApplicationUser> ApplicationUsers { get; }
     }
 }

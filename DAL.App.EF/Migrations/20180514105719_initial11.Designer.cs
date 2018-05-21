@@ -11,9 +11,10 @@ using System;
 namespace DAL.App.EF.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180514105719_initial11")]
+    partial class initial11
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -39,6 +40,8 @@ namespace DAL.App.EF.Migrations
 
                     b.Property<DateTimeOffset?>("LockoutEnd");
 
+                    b.Property<string>("Nickname");
+
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256);
 
@@ -57,8 +60,6 @@ namespace DAL.App.EF.Migrations
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256);
-
-                    b.Property<string>("Ńickname");
 
                     b.HasKey("Id");
 

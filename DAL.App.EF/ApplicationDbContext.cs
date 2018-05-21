@@ -12,6 +12,10 @@ namespace DAL.App.EF
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>, IDataContext
     {
+        public ApplicationDbContext()
+        {
+        }
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
@@ -25,6 +29,7 @@ namespace DAL.App.EF
         public DbSet<FollowedBlog> FollowedBlogs { get; set; }
         public DbSet<LikedBlog> LikedBlogs { get; set; }
         public DbSet<LikedBlogPost> LikedBlogPosts { get; set; }
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -33,6 +38,7 @@ namespace DAL.App.EF
             // Customize the ASP.NET Identity model and override the defaults if needed.
             // For example, you can rename the ASP.NET Identity table names and more.
             // Add your customizations after calling base.OnModelCreating(builder);
+           
         }
     }
 }

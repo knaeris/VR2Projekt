@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+
+using DAL.App.EF;
+using DAL.App.Interfaces;
 using Domain;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
@@ -17,14 +20,22 @@ using VR2Projekt.Services;
 
 namespace VR2Projekt.Controllers
 {
+    public class AuthDTO
+    {
+        public string email { get; set; }
+        public string password { get; set; }
+    }
+
     [Authorize]
-    [Route("[controller]/[action]")]
+    [Route("api/[controller]/[action]")]
     public class AccountController : Controller
     {
-        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly UserManager<ApplicationUser> _userManager ;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly IEmailSender _emailSender;
         private readonly ILogger _logger;
+        
+
 
         public AccountController(
             UserManager<ApplicationUser> userManager,
@@ -54,7 +65,7 @@ namespace VR2Projekt.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
+       // [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
@@ -215,16 +226,38 @@ namespace VR2Projekt.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
+
+        public async Task<IActionResult> RegApi(AuthDTO model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = new ApplicationUser { UserName = model.email, Email = model.password };
+                var result = await _userManager.CreateAsync(user, model.password);
+                return Ok(result);
+            }
+            return BadRequest();
+        }
+
+
+
+        [HttpPost]
+        [AllowAnonymous]
+       //[ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl = null)
         {
+
+
+
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await _userManager.CreateAsync(user, model.Password);
+
                 if (result.Succeeded)
                 {
+
+
                     _logger.LogInformation("User created a new account with password.");
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
@@ -235,9 +268,13 @@ namespace VR2Projekt.Controllers
                     _logger.LogInformation("User created a new account with password.");
                     return RedirectToLocal(returnUrl);
                 }
-                AddErrors(result);
-            }
 
+                
+                    AddErrors(result);
+                
+            }
+            
+           
             // If we got this far, something failed, redisplay form
             return View(model);
         }
