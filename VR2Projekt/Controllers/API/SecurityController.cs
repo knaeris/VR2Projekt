@@ -5,6 +5,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Http.Cors;
 using Domain;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -110,6 +111,7 @@ namespace VR2Projekt.Controllers.API
                     // serialise result and return it
                     return Ok(res);
                 }
+                
             }
             return BadRequest("Could not create token");
         }

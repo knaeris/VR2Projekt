@@ -19,6 +19,7 @@ namespace Domain
         public virtual List<BlogPostComment> BlogPostComments { get; set; }
         public string ApplicationUserId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
+        //public int NumberOfBlogPostLikes { get; set; }
 
     }
 }

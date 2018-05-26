@@ -33,7 +33,7 @@ namespace VR2Projekt.Controllers.API
        
         [AllowAnonymous]
         [HttpPost]
-       // [ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken]
         public IActionResult AddBlog([FromBody]BlogDTO b)
         {
 

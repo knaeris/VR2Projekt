@@ -21,5 +21,9 @@ namespace Domain
         public string ApplicationUserId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
         
+       // public int NumberOfFollowers { get; set; }
+        //public int NumberOfBlogLikes { get; set; }
+        
+        
     }
 }

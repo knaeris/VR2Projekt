@@ -89,7 +89,14 @@ namespace VR2Projekt
                             Encoding.UTF8.GetBytes(Configuration["Token:Key"])
                             )
                     };
-                   
+                    options.Events = new JwtBearerEvents
+                    {
+
+                        OnTokenValidated = async context =>
+                        {
+
+                        }
+                    };
                 });
 
 
