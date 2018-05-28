@@ -64,6 +64,7 @@ namespace VR2Projekt.Controllers
             blogCategory.ApplicationUserId = User.Identity.GetUserId();
             if (ModelState.IsValid)
             {
+                blogCategory.ApplicationUserId = User.Identity.GetUserId();
                 _context.Add(blogCategory);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

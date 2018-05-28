@@ -46,7 +46,7 @@ namespace VR2Projekt.Controllers.API
         
         
         [HttpPost]
-        [ValidateAntiForgeryToken]
+     //   [ValidateAntiForgeryToken]
         public IActionResult AddBlogCategory([FromBody] BlogCategoryDTO blogCategory)
         {
             blogCategory.ApplicationUserId = User.Identity.GetUserId();

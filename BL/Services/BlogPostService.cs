@@ -33,9 +33,9 @@ namespace BL.Services
             _uow.SaveChanges();
         }
 
-        public List<BlogPostDTO> GetAllBlogPosts()
+        public List<BlogPostDTO> GetAllBlogPostsInBlog(int blogId)
         {
-            return _uow.BlogPosts.All().Select(b => BlogPostDTO.CreateFromDomain(b)).ToList();
+            return _uow.BlogPosts.All().Where(p => p.BlogId == blogId).Select(b => BlogPostDTO.CreateFromDomain(b)).ToList();
         }
 
         public BlogPostDTO GetBlogPostById(int blogPostId)

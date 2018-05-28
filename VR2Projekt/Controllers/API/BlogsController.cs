@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using BL.DTO;
 using BL.Services.Interfaces;
 using DAL.App.EF;
+using DAL.App.Interfaces;
 using Domain;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -17,33 +19,44 @@ namespace VR2Projekt.Controllers.API
     public class BlogsController : Controller
     {
         private readonly IBlogService _blogService;
-        
-        public BlogsController(IBlogService blogService)
+        private readonly IAppUnitOfWork _uow;
+        private readonly ApplicationDbContext _context;
+
+        public BlogsController(IBlogService blogService, ApplicationDbContext context)
         {
             _blogService = blogService;
            
+            _context = context;
         }
      
-        [AllowAnonymous]
+      
         [HttpGet]
+       
         public List<BlogDTO> GetAllBlogs()
         {
            return _blogService.GetAllBlogs();
         }
        
-        [AllowAnonymous]
+        
         [HttpPost]
-        [ValidateAntiForgeryToken]
+       
         public IActionResult AddBlog([FromBody]BlogDTO b)
         {
 
             if (!ModelState.IsValid) return BadRequest();
-           b.ApplicationUserId = User.Identity.GetUserId();
+            var userEmail = User.Identity.GetUserId();
+            var appUser = _context.Users.FirstOrDefault(x => x.Email == userEmail);
+            b.ApplicationUserId = appUser.Id;
+            b.ApplicationUser = userEmail;
+            var bc = _context.BlogCategories.FirstOrDefault(x => x.BlogCategoryId == b.BlogCategoryId);
+            b.BlogCategory = bc.BlogCategoryName;
             var newBlog = _blogService.AddNewBlog(b);
             return CreatedAtAction("GetBlogById", new { id=newBlog.BlogId}, b);
         }
-        [AllowAnonymous]
-        [HttpGet("{blogId:int}")]
+        //[AllowAnonymous]
+
+      [HttpGet("{blogId:int}")]
+      [ValidateAntiForgeryToken]
         public IActionResult GetBlogById(int blogId)
         {
 
@@ -57,8 +70,13 @@ namespace VR2Projekt.Controllers.API
         public IActionResult UpdateBlog(int blogId, [FromBody] BlogDTO b)
         {
             if (!ModelState.IsValid) return BadRequest();
-            b.ApplicationUserId = User.Identity.GetUserId();
-            
+            var userEmail = User.Identity.GetUserId();
+            var appUser = _context.Users.FirstOrDefault(x => x.Email == userEmail);
+            b.ApplicationUserId = appUser.Id;
+            b.ApplicationUser = userEmail;
+            var bc = _context.BlogCategories.FirstOrDefault(x => x.BlogCategoryId == b.BlogCategoryId);
+            b.BlogCategory = bc.BlogCategoryName;
+
             var r = _blogService.UpdateBlog(blogId, b);
             if (r == null) return NotFound();
             

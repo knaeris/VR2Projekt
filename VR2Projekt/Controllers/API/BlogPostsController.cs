@@ -7,6 +7,8 @@ using System.Web.Http.Description;
 using System.Web.Http.Filters;
 using BL.DTO;
 using BL.Services.Interfaces;
+using DAL.App.EF;
+using Domain;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
@@ -17,36 +19,40 @@ namespace VR2Projekt.Controllers.API
 {
     [Consumes("application/json")]
     [Produces("application/json")]
-    [Route("api/BlogPosts")]
+    [Route("api/Blogs/{BlogId}/BlogPosts")]
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class BlogPostsController : Controller
     {
         private readonly IBlogPostService _blogPostService;
+        private readonly ApplicationDbContext _context;
 
-        public BlogPostsController(IBlogPostService blogPostService)
+        public BlogPostsController(IBlogPostService blogPostService, ApplicationDbContext context)
         {
             _blogPostService = blogPostService;
-
+            _context = context;
         }
-        [AllowAnonymous]
+     
         [HttpGet]
-        public List<BlogPostDTO> GetAllBlogPosts()
+        public List<BlogPostDTO> GetAllBlogPostsInBlog(int blogId)
         {
-            return _blogPostService.GetAllBlogPosts();
+            return _blogPostService.GetAllBlogPostsInBlog(blogId);
         }
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        //[EnableCors(origins: "localhost:3000", headers: "*", methods: "*")]
-        public IActionResult AddBlogPost([FromBody]BlogPostDTO bp)
+      //  [ValidateAntiForgeryToken]
+         public IActionResult AddBlogPost([FromBody]BlogPostDTO bp)
         {
-            bp.ApplicationUserId = User.Identity.GetUserId();
+            var userEmail = User.Identity.GetUserId();
+            var appUser = _context.Users.FirstOrDefault(x => x.Email == userEmail);
+            bp.ApplicationUserId = appUser.Id;
+            bp.ApplicationUser = userEmail;
+
             if (!ModelState.IsValid) return BadRequest();
 
             var newBlogPost = _blogPostService.AddNewBlogPost(bp);
             return CreatedAtAction("GetBlogPostById", new { id = newBlogPost.BlogPostId }, bp);
         }
-        [AllowAnonymous]
+      //  [AllowAnonymous]
         [HttpGet("{blogPostId:int}")]
         public IActionResult GetBlogPostById(int blogPostId)
         {

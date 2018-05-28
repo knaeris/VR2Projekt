@@ -7,7 +7,7 @@ namespace BL.Services.Interfaces
 {
     public interface IBlogPostService
     {
-        List<BlogPostDTO> GetAllBlogPosts();
+        List<BlogPostDTO> GetAllBlogPostsInBlog(int blogId);
         BlogPostDTO GetBlogPostById(int blogPostId);
         BlogPostDTO AddNewBlogPost(BlogPostDTO newBlogPost);
         BlogPostDTO UpdateBlogPost(int blogPostiId, BlogPostDTO blogPost);

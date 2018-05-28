@@ -89,14 +89,26 @@ namespace VR2Projekt
                             Encoding.UTF8.GetBytes(Configuration["Token:Key"])
                             )
                     };
-                    options.Events = new JwtBearerEvents
+                   options.Events = new JwtBearerEvents
                     {
-
-                        OnTokenValidated = async context =>
+                        OnTokenValidated = async (context) =>
                         {
+                            
+
+                            // lets check from usermanager, is the user actually allowed into system
+                            var userManager = context.HttpContext.RequestServices.GetService<UserManager<ApplicationUser>>();
+                            var user = await userManager.FindByEmailAsync(context.Principal.Identity.Name);
+                            if (user == null || user.LockoutEnd > DateTime.Now)
+                            {
+                                context.Response.StatusCode = 401;
+                            }
+
+                            // or lets get something from db
+                            // var db = context.HttpContext.RequestServices.GetRequiredService<ApplicationDbContext>();
 
                         }
                     };
+
                 });
 
 
@@ -175,14 +187,11 @@ namespace VR2Projekt
             services.AddMvc();
 
 
-            //services.Configure<MvcOptions>(options =>
-            //{
-            //    options.Filters.Add(new CorsAuthorizationFilterFactory("AllowAll"));
-            //});
+           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
             {

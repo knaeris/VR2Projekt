@@ -12,12 +12,12 @@ namespace BL.DTO
         public int BlogId { get; set; }
         public string BlogTitle { get; set; }
         public string BlogDescription { get; set; }
-      //  public int BlogCategoryId { get; set; }
-       public string BlogCategory { get; set; }
+        public int? BlogCategoryId { get; set; }
+        public string BlogCategory { get; set; }
         public List<BlogPostDTO> BlogPosts { get; set; }
         public List<BlogCommentDTO> BlogComments { get; set; }
+        public string ApplicationUser { get; set; }
         public string ApplicationUserId { get; set; }
-
         public static BlogDTO CreateFromDomain(Blog b)
         {
             if (b == null) return null;
@@ -26,8 +26,11 @@ namespace BL.DTO
                 BlogId=b.BlogId,
                 BlogTitle=b.BlogTitle,
                 BlogDescription=b.BlogDescription,
+                BlogCategoryId=b.BlogCategoryId,
                 BlogCategory=b?.BlogCategory?.BlogCategoryName,
-                ApplicationUserId = b.ApplicationUserId
+                ApplicationUser=b?.ApplicationUser?.Email,
+                ApplicationUserId=b?.ApplicationUserId
+               
 
             };
         }

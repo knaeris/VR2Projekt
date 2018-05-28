@@ -24,11 +24,8 @@ namespace DAL.App.EF.Repositories
         public override BlogPost Find(params object[] id)
         {
             return RepositoryDbSet
-                
-                .Include(z=>z.BlogPostComments)
                 .Include(x => x.Blog)
-                .ThenInclude(y => y.BlogCategory)
-
+                .Include(a=>a.ApplicationUser)
                 .SingleOrDefault(x => (int)id[0] == x.BlogPostId);
         }
     }

@@ -22,8 +22,10 @@ namespace BL.Factories
                 BlogId = b.BlogId,
                 BlogTitle = b.BlogTitle,
                 BlogDescription = b.BlogDescription,
-                ApplicationUserId = b.ApplicationUserId
-                // BlogCategoryId = b.BlogCategoryId
+                BlogCategoryId=b.BlogCategoryId,
+                BlogCategory=b?.BlogCategory?.BlogCategoryName,
+                ApplicationUser=b?.ApplicationUser?.Email
+                
             };
         }
 
@@ -34,7 +36,11 @@ namespace BL.Factories
                 BlogId=dto.BlogId,
                 BlogTitle = dto.BlogTitle,
                 BlogDescription = dto.BlogDescription,
-                ApplicationUserId = dto.ApplicationUserId
+                BlogCategoryId=dto.BlogCategoryId,
+                ApplicationUserId=dto.ApplicationUserId
+               
+         
+                
 
             };
         }

@@ -44,12 +44,12 @@ namespace VR2Projekt.Controllers.API
             if (r == null) return NotFound();
             return Ok(r);
         }
-        [AllowAnonymous]
+       // [AllowAnonymous]
         [HttpPost]
-       // [ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken]
         public IActionResult AddNewBlogComment([FromBody] BlogCommentDTO bc)
         {
-          //  bc.ApplicationUserId = User.Identity.GetUserId();
+            bc.ApplicationUserId = User.Identity.GetUserId();
             if (!ModelState.IsValid) return BadRequest();
 
             var newBlogComment = _blogCommentService.AddNewBlogComment(bc);

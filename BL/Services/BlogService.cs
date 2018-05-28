@@ -25,7 +25,7 @@ namespace BL.Services
             return newBlog;
 
         }
-#warning tegele deletega
+
         public void DeleteBlog(int blogId)
         {
             

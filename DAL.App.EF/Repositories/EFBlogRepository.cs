@@ -26,6 +26,7 @@ namespace DAL.App.EF.Repositories
                 .Include(y=>y.BlogCategory)
                 .Include(x => x.BlogPosts)
                 .Include(z=>z.BlogComments)
+                .Include(a=>a.ApplicationUser)
                 .SingleOrDefault(x => (int)id[0] == x.BlogId);
         }
     }

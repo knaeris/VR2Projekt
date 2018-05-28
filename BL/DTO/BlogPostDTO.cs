@@ -16,6 +16,7 @@ namespace BL.DTO
        
         public List<BlogPostCommentDTO> BlogPostComments { get; set; }
         public string ApplicationUserId { get; set; }
+        public string ApplicationUser { get; set; }
 
         public static BlogPostDTO CreateFromDomain(BlogPost bp)
         {
@@ -24,8 +25,10 @@ namespace BL.DTO
                 BlogPostId = bp.BlogPostId,
                 BlogPostTitle = bp.BlogPostTitle,
                 BlogPostContent = bp.BlogPostContent,
-                ApplicationUserId=bp.ApplicationUserId
-                
+                BlogId=bp.BlogId,
+                ApplicationUser = bp?.ApplicationUser?.Email,
+                ApplicationUserId = bp?.ApplicationUserId
+
 
 
 

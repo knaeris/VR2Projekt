@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace Domain
@@ -17,9 +18,13 @@ namespace Domain
         public virtual List<BlogPost> BlogPosts { get; set; } = new List<BlogPost>();
         public int Rating { get; set; }
         public virtual List<BlogComment> BlogComments { get; set; }
+        public int? BlogCategoryId { get; set; }
+        [ForeignKey("BlogCategoryId")]
         public virtual BlogCategory BlogCategory { get; set; }
         public string ApplicationUserId { get; set; }
+        [ForeignKey("ApplicationUserId")]
         public ApplicationUser ApplicationUser { get; set; }
+        
         
        // public int NumberOfFollowers { get; set; }
         //public int NumberOfBlogLikes { get; set; }

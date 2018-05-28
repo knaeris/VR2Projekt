@@ -17,12 +17,15 @@ namespace BL.Factories
     {
         public BlogPostDTO Transform(BlogPost bp)
         {
+           
+
             return new BlogPostDTO
             {
                 BlogPostId = bp.BlogPostId,
                 BlogPostTitle=bp.BlogPostTitle,
                 BlogPostContent=bp.BlogPostContent,
-                ApplicationUserId = bp.ApplicationUserId
+                ApplicationUser = bp?.ApplicationUser?.Email,
+                BlogId =bp.BlogId
             };
         }
 
@@ -33,7 +36,8 @@ namespace BL.Factories
                 BlogPostId = dto.BlogPostId,
                 BlogPostTitle = dto.BlogPostTitle,
                 BlogPostContent = dto.BlogPostContent,
-                ApplicationUserId = dto.ApplicationUserId
+                ApplicationUserId = dto.ApplicationUserId,
+                BlogId=dto.BlogId
             };
         }
 
