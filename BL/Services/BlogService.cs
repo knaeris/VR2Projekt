@@ -39,6 +39,7 @@ namespace BL.Services
         {
             return _uow.Blogs.All().Select(b => BlogDTO.CreateFromDomain(b)).ToList();
         }
+       
 
         public BlogDTO GetBlogById(int blogId)
         {

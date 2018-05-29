@@ -31,7 +31,7 @@ namespace VR2Projekt.Controllers.API
             _blogPostService = blogPostService;
             _context = context;
         }
-     
+        [AllowAnonymous]
         [HttpGet]
         public List<BlogPostDTO> GetAllBlogPostsInBlog(int blogId)
         {
@@ -52,7 +52,7 @@ namespace VR2Projekt.Controllers.API
             var newBlogPost = _blogPostService.AddNewBlogPost(bp);
             return CreatedAtAction("GetBlogPostById", new { id = newBlogPost.BlogPostId }, bp);
         }
-      //  [AllowAnonymous]
+        [AllowAnonymous]
         [HttpGet("{blogPostId:int}")]
         public IActionResult GetBlogPostById(int blogPostId)
         {

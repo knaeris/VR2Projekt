@@ -22,22 +22,32 @@ namespace VR2Projekt.Controllers.API
         private readonly IAppUnitOfWork _uow;
         private readonly ApplicationDbContext _context;
 
-        public BlogsController(IBlogService blogService, ApplicationDbContext context)
+        public BlogsController(IBlogService blogService, ApplicationDbContext context, IAppUnitOfWork uow)
         {
             _blogService = blogService;
-           
+            _uow = uow;
             _context = context;
         }
      
       
-        [HttpGet]
-       
+       [HttpGet]
+       [AllowAnonymous]
         public List<BlogDTO> GetAllBlogs()
         {
            return _blogService.GetAllBlogs();
         }
        
-        
+       /* [HttpGet]
+       // [Route("/myblogs")]
+        public IEnumerable<Blog> GetMyBlogs()
+        {
+            var userEmail = User.Identity.GetUserId();
+            var appUser = _context.Users.FirstOrDefault(x => x.Email == userEmail);
+            var myBlogs = _uow.Blogs.All().Where(x=>x.ApplicationUserId==appUser.Id);
+            return myBlogs;
+        }*/
+
+
         [HttpPost]
        
         public IActionResult AddBlog([FromBody]BlogDTO b)
@@ -53,10 +63,10 @@ namespace VR2Projekt.Controllers.API
             var newBlog = _blogService.AddNewBlog(b);
             return CreatedAtAction("GetBlogById", new { id=newBlog.BlogId}, b);
         }
-        //[AllowAnonymous]
+        
 
-      [HttpGet("{blogId:int}")]
-      [ValidateAntiForgeryToken]
+        [HttpGet("{blogId:int}")]
+        [AllowAnonymous]
         public IActionResult GetBlogById(int blogId)
         {
 
