@@ -14,5 +14,6 @@ namespace Domain
         public virtual List<Blog> Blogs { get; set; } = new List<Blog>();
         public string ApplicationUserId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
+        public List<FavoriteCategory> FavoriteCategories { get; set; } = new List<FavoriteCategory>();
     }
 }

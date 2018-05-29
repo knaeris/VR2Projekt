@@ -22,8 +22,8 @@ namespace Domain
         public string ApplicationUserId { get; set; }
         [ForeignKey("ApplicationUserId")]
         public ApplicationUser ApplicationUser { get; set; }
-        
-        //public int NumberOfBlogPostLikes { get; set; }
+
+        public List<LikedBlogPost> LikedBlogPosts { get; set; } = new List<LikedBlogPost>();
 
     }
 }

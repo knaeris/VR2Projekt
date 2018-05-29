@@ -28,16 +28,15 @@ namespace VR2Projekt.Controllers.API
            
         }
      
-        [AllowAnonymous]
         [HttpGet]
         public List<FollowedBlogDTO> GetAllFollowedBlogs()
         {
            return _followedBlogService.GetAllFollowedBlogs();
         }
        
-        [AllowAnonymous]
+        
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        
         public IActionResult AddFollowedBlog([FromBody]FollowedBlogDTO fb)
         {
 

@@ -11,7 +11,7 @@ using System;
 namespace DAL.App.EF.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20180528113625_Initial")]
+    [Migration("20180529155356_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -81,7 +81,7 @@ namespace DAL.App.EF.Migrations
 
                     b.Property<string>("ApplicationUserId");
 
-                    b.Property<int>("BlogCategoryId");
+                    b.Property<int?>("BlogCategoryId");
 
                     b.Property<string>("BlogDescription")
                         .HasMaxLength(1024);
@@ -231,6 +231,8 @@ namespace DAL.App.EF.Migrations
                 {
                     b.Property<int>("LikedBlogId")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<string>("ApplcationUserId");
 
                     b.Property<string>("ApplicationUserId");
 
@@ -383,8 +385,7 @@ namespace DAL.App.EF.Migrations
 
                     b.HasOne("Domain.BlogCategory", "BlogCategory")
                         .WithMany("Blogs")
-                        .HasForeignKey("BlogCategoryId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("BlogCategoryId");
                 });
 
             modelBuilder.Entity("Domain.BlogCategory", b =>
@@ -435,7 +436,7 @@ namespace DAL.App.EF.Migrations
                         .HasForeignKey("ApplicationUserId");
 
                     b.HasOne("Domain.BlogCategory", "BlogCategory")
-                        .WithMany()
+                        .WithMany("FavoriteCategories")
                         .HasForeignKey("BlogCategoryId");
                 });
 
@@ -446,7 +447,7 @@ namespace DAL.App.EF.Migrations
                         .HasForeignKey("ApplicationUserId");
 
                     b.HasOne("Domain.Blog", "Blog")
-                        .WithMany()
+                        .WithMany("FollowedBlogs")
                         .HasForeignKey("BlogId");
                 });
 
@@ -457,7 +458,7 @@ namespace DAL.App.EF.Migrations
                         .HasForeignKey("ApplicationUserId");
 
                     b.HasOne("Domain.Blog", "Blog")
-                        .WithMany()
+                        .WithMany("LikedBlogs")
                         .HasForeignKey("BlogId");
                 });
 
@@ -468,7 +469,7 @@ namespace DAL.App.EF.Migrations
                         .HasForeignKey("ApplicationUserId");
 
                     b.HasOne("Domain.BlogPost", "BlogPost")
-                        .WithMany()
+                        .WithMany("LikedBlogPosts")
                         .HasForeignKey("BlogPostId");
                 });
 

@@ -24,10 +24,10 @@ namespace Domain
         public string ApplicationUserId { get; set; }
         [ForeignKey("ApplicationUserId")]
         public ApplicationUser ApplicationUser { get; set; }
+        public List<FollowedBlog> FollowedBlogs { get; set; } = new List<FollowedBlog>();
+        public List<LikedBlog> LikedBlogs { get; set; } = new List<LikedBlog>();
         
-        
-       // public int NumberOfFollowers { get; set; }
-        //public int NumberOfBlogLikes { get; set; }
+     
         
         
     }
