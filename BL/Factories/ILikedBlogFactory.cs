@@ -19,7 +19,6 @@ namespace BL.Factories
             return new LikedBlogDTO
             {
                 LikedBlogId = fb.LikedBlogId,
-                Blogs = fb?.Blog?.BlogTitle,
                 LikedBlogTime=fb.LikedBlogTime
                 //ApplicationUserId = fc.ApplicationUserId
 

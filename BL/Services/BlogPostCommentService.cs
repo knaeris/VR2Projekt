@@ -33,9 +33,9 @@ namespace BL.Services
             _uow.SaveChanges();
         }
 
-        public List<BlogPostCommentDTO> GetAllBlogPostComments()
+        public List<BlogPostCommentDTO> GetAllBlogPostComments(int blogPostId)
         {
-            return _uow.BlogPostComments.All().Select(b => BlogPostCommentDTO.CreateFromDomain(b)).ToList();
+            return _uow.BlogPostComments.All().Where(x=>x.BlogPostId == blogPostId).Select(b => BlogPostCommentDTO.CreateFromDomain(b)).ToList();
         }
 
         public BlogPostCommentDTO GetBlogPostCommentById(int blogPostCommentId)

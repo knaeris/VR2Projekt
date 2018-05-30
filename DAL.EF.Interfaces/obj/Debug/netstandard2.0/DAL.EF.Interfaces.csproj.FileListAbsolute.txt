@@ -1,9 +1,9 @@
 C:\Users\kristo\Desktop\git\VR2ProjektSolution\DAL.EF.Interfaces\bin\Debug\netstandard2.0\DAL.EF.Interfaces.deps.json
 C:\Users\kristo\Desktop\git\VR2ProjektSolution\DAL.EF.Interfaces\bin\Debug\netstandard2.0\DAL.EF.Interfaces.dll
 C:\Users\kristo\Desktop\git\VR2ProjektSolution\DAL.EF.Interfaces\bin\Debug\netstandard2.0\DAL.EF.Interfaces.pdb
+C:\Users\kristo\Desktop\git\VR2ProjektSolution\DAL.EF.Interfaces\obj\Debug\netstandard2.0\DAL.EF.Interfaces.csprojResolveAssemblyReference.cache
 C:\Users\kristo\Desktop\git\VR2ProjektSolution\DAL.EF.Interfaces\obj\Debug\netstandard2.0\DAL.EF.Interfaces.csproj.CoreCompileInputs.cache
 C:\Users\kristo\Desktop\git\VR2ProjektSolution\DAL.EF.Interfaces\obj\Debug\netstandard2.0\DAL.EF.Interfaces.AssemblyInfoInputs.cache
 C:\Users\kristo\Desktop\git\VR2ProjektSolution\DAL.EF.Interfaces\obj\Debug\netstandard2.0\DAL.EF.Interfaces.AssemblyInfo.cs
 C:\Users\kristo\Desktop\git\VR2ProjektSolution\DAL.EF.Interfaces\obj\Debug\netstandard2.0\DAL.EF.Interfaces.dll
 C:\Users\kristo\Desktop\git\VR2ProjektSolution\DAL.EF.Interfaces\obj\Debug\netstandard2.0\DAL.EF.Interfaces.pdb
-C:\Users\kristo\Desktop\git\VR2ProjektSolution\DAL.EF.Interfaces\obj\Debug\netstandard2.0\DAL.EF.Interfaces.csprojResolveAssemblyReference.cache

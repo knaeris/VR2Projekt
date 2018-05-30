@@ -7,7 +7,7 @@ namespace BL.Services.Interfaces
 {
     public interface IBlogPostCommentService
     {
-        List<BlogPostCommentDTO> GetAllBlogPostComments();
+        List<BlogPostCommentDTO> GetAllBlogPostComments(int blogPostId);
         BlogPostCommentDTO GetBlogPostCommentById(int blogPostCommentId);
         BlogPostCommentDTO AddNewBlogPostComment(BlogPostCommentDTO newBlogPostComment);
         BlogPostCommentDTO UpdateBlogPostComment(int blogPostCommentId, BlogPostCommentDTO blogPostComment);

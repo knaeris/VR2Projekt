@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BL.DTO;
 using BL.Services.Interfaces;
+using DAL.App.EF;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
@@ -13,23 +14,25 @@ using Microsoft.AspNetCore.Mvc;
 namespace VR2Projekt.Controllers.API
 {
     [Produces("application/json")]
-    [Route("api/BlogPostComments")]
+    [Route("api/Blogs/{blogId}/BlogPosts/{blogPostId}/BlogPostComments")]
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class BlogPostCommentsController : Controller
     {
         private readonly IBlogPostCommentService _blogPostCommentService;
+        private readonly ApplicationDbContext _context;
 
-        public BlogPostCommentsController(IBlogPostCommentService blogPostCommentService)
+        public BlogPostCommentsController(IBlogPostCommentService blogPostCommentService, ApplicationDbContext context)
         {
             _blogPostCommentService = blogPostCommentService;
+            _context = context;
 
         }
         [AllowAnonymous]
         [HttpGet]
 
-        public List<BlogPostCommentDTO> GetAllBlogPostComments()
+        public List<BlogPostCommentDTO> GetAllBlogPostComments(int blogPostId)
         {
-            return _blogPostCommentService.GetAllBlogPostComments();
+            return _blogPostCommentService.GetAllBlogPostComments(blogPostId);
         }
         [AllowAnonymous]
         [HttpGet("{blogPostCommentId:int}")]
@@ -40,14 +43,16 @@ namespace VR2Projekt.Controllers.API
             if (r == null) return NotFound();
             return Ok(r);
         }
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpPost]
         // [ValidateAntiForgeryToken]
         public IActionResult AddNewBlogPostComment([FromBody] BlogPostCommentDTO bc)
         {
-            //  bc.ApplicationUserId = User.Identity.GetUserId();
+             
             if (!ModelState.IsValid) return BadRequest();
-
+            var userEmail = User.Identity.GetUserId();
+            var appUser = _context.Users.FirstOrDefault(x => x.Email == userEmail);
+            bc.ApplicationUserId = appUser.Id;
             var newBlogPostComment = _blogPostCommentService.AddNewBlogPostComment(bc);
 
             return CreatedAtAction("GetBlogPostCommentById", new { id = newBlogPostComment.BlogPostCommentId }, bc);

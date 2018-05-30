@@ -12,7 +12,7 @@ namespace Domain
         [MaxLength(640)]
         public string BlogPostCommentContent { get; set; }
         public DateTime BlogPostCommentPostedTime { get; set; }
-
+        public int BlogPostId { get; set; }
         public virtual BlogPost BlogPost { get; set; }
         public string ApplicationUserId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }

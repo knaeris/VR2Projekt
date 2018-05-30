@@ -20,7 +20,8 @@ namespace BL.Factories
             {
                 BlogPostCommentId = bc.BlogPostCommentId,
                 BlogPostCommentContent = bc.BlogPostCommentContent,
-                ApplicationUserId = bc.ApplicationUserId
+                BlogPostId=bc.BlogPostId
+                
 
 
             };
@@ -32,6 +33,7 @@ namespace BL.Factories
             {
                 BlogPostCommentId = dto.BlogPostCommentId,
                 BlogPostCommentContent = dto.BlogPostCommentContent,
+                BlogPostId=dto.BlogPostId,
                 ApplicationUserId = dto.ApplicationUserId
 
 
