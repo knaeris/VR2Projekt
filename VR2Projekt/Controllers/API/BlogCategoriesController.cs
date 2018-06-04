@@ -38,6 +38,8 @@ namespace VR2Projekt.Controllers.API
         [HttpGet("{blogCategoryId:int}")]
         public IActionResult GetBlogCategoryById( int blogCategoryId)
         {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+            
             var r = _blogCategoryService.GetBlogCategoryById(blogCategoryId);
             if (r == null) return NotFound();
             return Ok(r);
@@ -49,21 +51,20 @@ namespace VR2Projekt.Controllers.API
      //   [ValidateAntiForgeryToken]
         public IActionResult AddBlogCategory([FromBody] BlogCategoryDTO blogCategory)
         {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
             blogCategory.ApplicationUserId = User.Identity.GetUserId();
-            if (!ModelState.IsValid) return BadRequest();
-
             var newBlogCategory = _blogCategoryService.AddNewBlogCategory(blogCategory);
-           
-
-            return CreatedAtAction("GetBlogCategory", new { id = newBlogCategory.BlogCategoryId }, blogCategory);
+           return CreatedAtAction("GetBlogCategory", new { id = newBlogCategory.BlogCategoryId }, blogCategory);
         }
+
         [HttpPut("{blogCategoryId:int}")]
         [ValidateAntiForgeryToken]
         public IActionResult UpdateBlogCategory(int blogCategoryId, [FromBody] BlogCategoryDTO bc)
         {
-            
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+            if (blogCategoryId != bc.BlogCategoryId) return BadRequest();
             bc.ApplicationUserId = User.Identity.GetUserId();
-            if (!ModelState.IsValid) return BadRequest();
+            
             var r = _blogCategoryService.UpdateBlogCategory(blogCategoryId, bc);
             if (r == null) return NotFound();
 
@@ -76,7 +77,7 @@ namespace VR2Projekt.Controllers.API
        // [ValidateAntiForgeryToken]
         public void DeleteBlogCategory(int blogCategoryId)
         {
-
+            
             _blogCategoryService.DeleteBlogCategory(blogCategoryId);
         }
     }

@@ -31,47 +31,73 @@ namespace VR2Projekt.Controllers.API
             _blogPostService = blogPostService;
             _context = context;
         }
+        /// <summary>
+        /// Get all blogposts in blog by blogid
+        /// </summary>
+        /// <param name="blogId"></param>
+        /// <returns>blogpost in specific blog</returns>
         [AllowAnonymous]
         [HttpGet]
         public List<BlogPostDTO> GetAllBlogPostsInBlog(int blogId)
         {
             return _blogPostService.GetAllBlogPostsInBlog(blogId);
         }
-        //[AllowAnonymous]
+        
+        /// <summary>
+        /// post new blogpost to database
+        /// </summary>
+        /// <param name="bp"></param>
+        /// <returns>new blogpost</returns>
         [HttpPost]
-      //  [ValidateAntiForgeryToken]
+     
          public IActionResult AddBlogPost([FromBody]BlogPostDTO bp)
         {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
             var userEmail = User.Identity.GetUserId();
             var appUser = _context.Users.FirstOrDefault(x => x.Email == userEmail);
             bp.ApplicationUserId = appUser.Id;
             bp.ApplicationUser = userEmail;
 
-            if (!ModelState.IsValid) return BadRequest();
+            
 
             var newBlogPost = _blogPostService.AddNewBlogPost(bp);
             return CreatedAtAction("GetBlogPostById", new { id = newBlogPost.BlogPostId }, bp);
         }
+        /// <summary>
+        /// Method to get blogpost by id
+        /// </summary>
+        /// <param name="blogPostId"></param>
+        /// <returns>Ok status with blogpost</returns>
         [AllowAnonymous]
         [HttpGet("{blogPostId:int}")]
         public IActionResult GetBlogPostById(int blogPostId)
         {
-
+            if (!ModelState.IsValid) return BadRequest(ModelState);
             var r = _blogPostService.GetBlogPostById(blogPostId);
             if (r == null) return NotFound();
             return Ok(r);
         }
+        /// <summary>
+        /// Method to update blogpost
+        /// </summary>
+        /// <param name="blogPostId"></param>
+        /// <param name="bp"></param>
+        /// <returns>Ok status with updated blogpost</returns>
         [HttpPut("{blogPostId:int}")]
         [ValidateAntiForgeryToken]
         public IActionResult UpdateBlogPost(int blogPostId, [FromBody]BlogPostDTO bp)
         {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
             bp.ApplicationUserId = User.Identity.GetUserId();
-            if (!ModelState.IsValid) return BadRequest();
             var r = _blogPostService.UpdateBlogPost(blogPostId, bp);
             if (r == null) return NotFound();
             
             return Ok(r);
         }
+        /// <summary>
+        /// Deletes blogpost
+        /// </summary>
+        /// <param name="blogPostId"></param>
         [HttpDelete("{blogPostId:int}")]
         public void DeleteBlogPost(int blogPostId)
         {

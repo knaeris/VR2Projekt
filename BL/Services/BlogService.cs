@@ -4,22 +4,27 @@ using System.Linq;
 using BL.Factories;
 using BL.Services.Interfaces;
 using Domain;
+using DAL.App.EF;
 
 namespace BL.Services
 {
     public class BlogService : IBlogService
     {
         private readonly DAL.App.Interfaces.IAppUnitOfWork _uow;
-        private readonly IBlogFactory _blogFactory; 
-        public BlogService(DAL.App.Interfaces.IAppUnitOfWork uow,IBlogFactory blogFactory)
+        private readonly IBlogFactory _blogFactory;
+        private readonly ApplicationDbContext _context;
+        public BlogService(DAL.App.Interfaces.IAppUnitOfWork uow,IBlogFactory blogFactory, ApplicationDbContext context)
         {
             _uow = uow;
             _blogFactory = blogFactory;
+            _context = context;
         }
 
         public BlogDTO AddNewBlog(BlogDTO newBlog)
         {
             var blog = _blogFactory.Transform(newBlog);
+            
+           // blog.ApplicationUser =_context.Users.FirstOrDefault(x=>x.Id == newBlog.ApplicationUserId);
             _uow.Blogs.Add(blog);
             _uow.SaveChanges();
             return newBlog;
@@ -43,7 +48,7 @@ namespace BL.Services
 
         public BlogDTO GetBlogById(int blogId)
         {
-            return BlogDTO.CreateFromDomain(_uow.Blogs.Find(blogId));
+            return BlogDTO.CreateFromDomainWithBlogPosts(_uow.Blogs.Find(blogId));
         }
 
 

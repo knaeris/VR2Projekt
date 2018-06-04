@@ -29,7 +29,10 @@ namespace VR2Projekt.Controllers.API
             _context = context;
         }
      
-      
+      /// <summary>
+      /// Method to get all blogs
+      /// </summary>
+      /// <returns>All blogs</returns>
        [HttpGet]
        [AllowAnonymous]
         public List<BlogDTO> GetAllBlogs()
@@ -37,26 +40,22 @@ namespace VR2Projekt.Controllers.API
            return _blogService.GetAllBlogs();
         }
        
-       /* [HttpGet]
-       // [Route("/myblogs")]
-        public IEnumerable<Blog> GetMyBlogs()
-        {
-            var userEmail = User.Identity.GetUserId();
-            var appUser = _context.Users.FirstOrDefault(x => x.Email == userEmail);
-            var myBlogs = _uow.Blogs.All().Where(x=>x.ApplicationUserId==appUser.Id);
-            return myBlogs;
-        }*/
 
-
+        /// <summary>
+        /// Adds new blog to database
+        /// </summary>
+        /// <param name="b"></param>
+        /// <returns>new blog</returns>
         [HttpPost]
        
         public IActionResult AddBlog([FromBody]BlogDTO b)
         {
 
-            if (!ModelState.IsValid) return BadRequest();
+            if (!ModelState.IsValid) return BadRequest(ModelState);
             var userEmail = User.Identity.GetUserId();
             var appUser = _context.Users.FirstOrDefault(x => x.Email == userEmail);
             b.ApplicationUserId = appUser.Id;
+           
             b.ApplicationUser = userEmail;
             var bc = _context.BlogCategories.FirstOrDefault(x => x.BlogCategoryId == b.BlogCategoryId);
             b.BlogCategory = bc.BlogCategoryName;
@@ -64,40 +63,63 @@ namespace VR2Projekt.Controllers.API
             return CreatedAtAction("GetBlogById", new { id=newBlog.BlogId}, b);
         }
         
-
+        /// <summary>
+        /// Gets blog by id
+        /// </summary>
+        /// <param name="blogId"></param>
+        /// <returns>Ok status with matching blog</returns>
         [HttpGet("{blogId:int}")]
         [AllowAnonymous]
         public IActionResult GetBlogById(int blogId)
         {
-
+            if (!ModelState.IsValid) return BadRequest(ModelState);
             var r = _blogService.GetBlogById(blogId);
             if (r == null) return NotFound();
             return Ok(r);
         }
+        /// <summary>
+        /// Updates blog
+        /// </summary>
+        /// <param name="blogId"></param>
+        /// <param name="b"></param>
+        /// <returns>Ok status with updated blog</returns>
         [AllowAnonymous]
         [HttpPut("{blogId:int}")]
-       // [ValidateAntiForgeryToken]
+       
         public IActionResult UpdateBlog(int blogId, [FromBody] BlogDTO b)
         {
-            if (!ModelState.IsValid) return BadRequest();
+            if (!ModelState.IsValid) return BadRequest(ModelState);
             var userEmail = User.Identity.GetUserId();
             var appUser = _context.Users.FirstOrDefault(x => x.Email == userEmail);
             b.ApplicationUserId = appUser.Id;
             b.ApplicationUser = userEmail;
             var bc = _context.BlogCategories.FirstOrDefault(x => x.BlogCategoryId == b.BlogCategoryId);
             b.BlogCategory = bc.BlogCategoryName;
+            
+                var r = _blogService.UpdateBlog(blogId, b);
+                if (r == null) return NotFound();
+                return Ok(r);
+            
+            
 
-            var r = _blogService.UpdateBlog(blogId, b);
-            if (r == null) return NotFound();
-            
-            
-            return Ok(r);
+
+           
         }
+        /// <summary>
+        /// Deletes blog
+        /// </summary>
+        /// <param name="blogId"></param>
         [HttpDelete("{blogId:int}")]
+      
         public void DeleteBlog(int blogId)
         {
-           
-             _blogService.DeleteBlog(blogId); 
+            var blog = _blogService.GetBlogById(blogId);
+            var userEmail = User.Identity.GetUserId();
+            var appUser = _context.Users.FirstOrDefault(x => x.Email == userEmail);
+            if (blog.ApplicationUserId == appUser.Id)
+                _blogService.DeleteBlog(blogId);
+            else
+                 BadRequest();
         }
     }
 }

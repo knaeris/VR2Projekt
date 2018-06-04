@@ -39,6 +39,7 @@ namespace VR2Projekt.Controllers.API
 
         public IActionResult GetBlogPostCommentById(int blogPostCommentId)
         {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
             var r = _blogPostCommentService.GetBlogPostCommentById(blogPostCommentId);
             if (r == null) return NotFound();
             return Ok(r);
@@ -48,8 +49,8 @@ namespace VR2Projekt.Controllers.API
         // [ValidateAntiForgeryToken]
         public IActionResult AddNewBlogPostComment([FromBody] BlogPostCommentDTO bc)
         {
-             
-            if (!ModelState.IsValid) return BadRequest();
+
+            if (!ModelState.IsValid) return BadRequest(ModelState);
             var userEmail = User.Identity.GetUserId();
             var appUser = _context.Users.FirstOrDefault(x => x.Email == userEmail);
             bc.ApplicationUserId = appUser.Id;
@@ -61,8 +62,9 @@ namespace VR2Projekt.Controllers.API
         [ValidateAntiForgeryToken]
         public IActionResult UpdateBlogPostComment(int blogPostCommentId, [FromBody] BlogPostCommentDTO bc)
         {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
             bc.ApplicationUserId = User.Identity.GetUserId();
-            if (!ModelState.IsValid) return BadRequest();
+           
             var r = _blogPostCommentService.UpdateBlogPostComment(blogPostCommentId, bc);
 
             return Ok(r);
